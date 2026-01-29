@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "gallery": "Galería",
+    "about": "Acerca de",
+    "brand": "Guinea Ecuatorial",
+    "brandSub": "Archivos"
+  },
+  "home": {
+    "period": "Período colonial 1778–1968",
+    "title": "Un testimonio visual de la historia colonial",
+    "intro": "Este archivo digital presenta una selección de fotografías históricas que documentan Guinea Ecuatorial durante el período colonial español.",
+    "cta": "Ver colección",
+    "purposeTitle": "Objetivo y alcance",
+    "purpose1": "Estas imágenes constituyen un testimonio histórico fundamental del paisaje arquitectónico, social y cultural de la época. Las fotografías proceden de fondos nacionales, colecciones privadas e instituciones históricas.",
+    "purpose2": "Cada imagen va acompañada de información sobre su fecha, lugar y relevancia histórica. Este archivo está destinado a la enseñanza y la investigación.",
+    "contextTitle": "Contexto histórico",
+    "context": "Guinea Ecuatorial, formada por la región continental (Río Muni) y varias islas (entre ellas Bioko, antes Fernando Pó), estuvo bajo dominio colonial español durante casi dos siglos. Las imágenes datan de finales del siglo xix hasta mediados del xx y documentan el desarrollo urbano, las infraestructuras y la organización social."
+  },
+  "gallery": {
+    "label": "Colección",
+    "title": "Archivo fotográfico",
+    "subtitle": "Una selección de fotografías históricas que documentan la arquitectura, la vida urbana y las estructuras sociales durante el período colonial."
+  },
+  "photo": {
+    "of": "de",
+    "date": "Fecha",
+    "location": "Lugar",
+    "source": "Fuente de archivo",
+    "context": "Contexto histórico",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "backToGallery": "Galería",
+    "notFound": "Fotografía no encontrada",
+    "returnToGallery": "Volver a la galería"
+  },
+  "about": {
+    "label": "Información",
+    "title": "Acerca de este archivo",
+    "missionTitle": "Misión",
+    "mission1": "Este repositorio digital preserva y presenta fotografías históricas del período colonial español (1778–1968). El proyecto pone estos materiales a disposición de investigadores, educadores y el público.",
+    "mission2": "La colección se centra en el desarrollo arquitectónico, social y urbano durante la época colonial. Estas imágenes son una evidencia esencial para comprender la transformación del territorio y su población.",
+    "sourcesTitle": "Investigación y fuentes",
+    "primaryArchives": "Archivos principales",
+    "archives": [
+      "Archivo Histórico Nacional de Guinea Ecuatorial",
+      "Fondo de archivos coloniales españoles",
+      "Colecciones privadas (diversos donantes)",
+      "Colección de historia marítima",
+      "Archivo de investigación antropológica"
+    ],
+    "methodologyTitle": "Metodología",
+    "methodology": "Cada fotografía ha sido autenticada y catalogada. La datación se basa en registros de archivo, análisis arquitectónico y cruce con documentos históricos.",
+    "educationTitle": "Finalidad educativa",
+    "education": "Este archivo está destinado a la enseñanza y la investigación. Reconocemos que la historia colonial contiene materiales difíciles y los abordamos con el contexto y la perspectiva crítica apropiados.",
+    "readingTitle": "Para saber más",
+    "contactTitle": "Contacto y contribuciones",
+    "contactText": "Aceptamos contribuciones de investigadores, archiveros y particulares que dispongan de fotografías o información histórica adicional. Contacte con nuestro equipo de investigación.",
+    "email": "Correo electrónico",
+    "emailValue": "archivos@eq-guinea-history.org"
+  },
+  "footer": {
+    "tagline": "Un repositorio digital para la investigación histórica"
+  }
+}

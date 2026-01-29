@@ -1,0 +1,65 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "gallery": "Galerie",
+    "about": "À propos",
+    "brand": "Guinée équatoriale",
+    "brandSub": "Archives"
+  },
+  "home": {
+    "period": "Période coloniale 1778–1968",
+    "title": "Un témoignage visuel de l'histoire coloniale",
+    "intro": "Cette archive numérique présente une sélection de photographies historiques documentant la Guinée équatoriale pendant la période coloniale espagnole.",
+    "cta": "Voir la collection",
+    "purposeTitle": "Objectif et portée",
+    "purpose1": "Ces images constituent un témoignage historique important sur le paysage architectural, social et culturel de l'époque. Les photographies proviennent de fonds nationaux, de collections privées et d'institutions historiques.",
+    "purpose2": "Chaque image est accompagnée d'informations sur sa date, son lieu et sa portée historique. Cette archive est destinée à l'enseignement et à la recherche.",
+    "contextTitle": "Contexte historique",
+    "context": "La Guinée équatoriale, composée du continent (Río Muni) et de plusieurs îles (dont Bioko, anciennement Fernando Pó), fut sous domination coloniale espagnole pendant près de deux siècles. Les images datent de la fin du xixe au milieu du xxe siècle et documentent le développement urbain, les infrastructures et l'organisation sociale."
+  },
+  "gallery": {
+    "label": "Collection",
+    "title": "Archive photographique",
+    "subtitle": "Une sélection de photographies historiques documentant l'architecture, la vie urbaine et les structures sociales pendant la période coloniale."
+  },
+  "photo": {
+    "of": "sur",
+    "date": "Date",
+    "location": "Lieu",
+    "source": "Source des archives",
+    "context": "Contexte historique",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "backToGallery": "Galerie",
+    "notFound": "Photographie introuvable",
+    "returnToGallery": "Retour à la galerie"
+  },
+  "about": {
+    "label": "Information",
+    "title": "À propos de cette archive",
+    "missionTitle": "Mission",
+    "mission1": "Ce dépôt numérique préserve et présente des photographies historiques de la période coloniale espagnole (1778–1968). Le projet met ces documents à la disposition des chercheurs, des enseignants et du public.",
+    "mission2": "La collection porte sur l'architecture, la société et le développement urbain à l'époque coloniale. Ces images sont des sources essentielles pour comprendre la transformation du territoire et de ses habitants.",
+    "sourcesTitle": "Recherche et sources",
+    "primaryArchives": "Archives principales",
+    "archives": [
+      "Archives historiques nationales de Guinée équatoriale",
+      "Fonds des archives coloniales espagnoles",
+      "Collections privées (divers donateurs)",
+      "Collection d'histoire maritime",
+      "Archive de recherche anthropologique"
+    ],
+    "methodologyTitle": "Méthodologie",
+    "methodology": "Chaque photographie a été authentifiée et cataloguée. La datation repose sur les archives, l'analyse architecturale et le croisement avec les sources historiques.",
+    "educationTitle": "Objectif pédagogique",
+    "education": "Cette archive est destinée à l'enseignement et à la recherche. Nous reconnaissons que l'histoire coloniale comporte des sujets difficiles et l'abordons avec un contexte et un regard critiques appropriés.",
+    "readingTitle": "Pour aller plus loin",
+    "contactTitle": "Contact et contributions",
+    "contactText": "Nous accueillons les contributions de chercheurs, d'archivistes et de toute personne disposant de photographies ou d'informations historiques. Contactez notre équipe de recherche.",
+    "email": "Courriel",
+    "emailValue": "archivos@eq-guinea-history.org"
+  },
+  "footer": {
+    "tagline": "Un dépôt numérique pour la recherche historique"
+  }
+}
