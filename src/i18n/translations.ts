@@ -1,12 +1,7 @@
 import type { Locale } from '@/i18n';
-
-// @ts-expect-error JSON import
 import es from '@/i18n/locales/es.json';
-// @ts-expect-error JSON import
 import fr from '@/i18n/locales/fr.json';
-// @ts-expect-error JSON import
 import photosEs from '@/i18n/locales/photos.es.json';
-// @ts-expect-error JSON import
 import photosFr from '@/i18n/locales/photos.fr.json';
 
 const messages = { es, fr } as const;
