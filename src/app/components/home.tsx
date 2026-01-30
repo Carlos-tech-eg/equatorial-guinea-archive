@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLocale } from '@/app/providers';
+import { BiografiasWidget } from '@/app/components/biografias-widget';
 
 export function Home() {
   const { t } = useLocale();
@@ -60,6 +61,12 @@ export function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16 max-w-[100vw]">
+          <BiografiasWidget />
         </div>
       </section>
 

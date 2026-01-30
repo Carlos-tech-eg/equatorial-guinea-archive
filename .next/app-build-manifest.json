@@ -12,18 +12,10 @@
       "static/chunks/4bd1b696-36cfac4c219383fd.js",
       "static/chunks/517-7d9171509f790edc.js",
       "static/chunks/main-app-595f1d1ed6aaa130.js",
-      "static/css/c8415c7d2057a427.css",
+      "static/css/f16ee723cb7cdfd7.css",
       "static/chunks/461-10126da38d4cd367.js",
       "static/chunks/894-ccbbbd33f08193c2.js",
       "static/chunks/app/layout-26cc658365700eff.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack-55937cd9e2d69b86.js",
-      "static/chunks/4bd1b696-36cfac4c219383fd.js",
-      "static/chunks/517-7d9171509f790edc.js",
-      "static/chunks/main-app-595f1d1ed6aaa130.js",
-      "static/chunks/894-ccbbbd33f08193c2.js",
-      "static/chunks/app/about/page-e5b3d24de3866344.js"
     ],
     "/biografias/page": [
       "static/chunks/webpack-55937cd9e2d69b86.js",
@@ -33,14 +25,13 @@
       "static/chunks/894-ccbbbd33f08193c2.js",
       "static/chunks/app/biografias/page-b420945b4dbd1601.js"
     ],
-    "/gallery/page": [
+    "/about/page": [
       "static/chunks/webpack-55937cd9e2d69b86.js",
       "static/chunks/4bd1b696-36cfac4c219383fd.js",
       "static/chunks/517-7d9171509f790edc.js",
       "static/chunks/main-app-595f1d1ed6aaa130.js",
-      "static/chunks/461-10126da38d4cd367.js",
       "static/chunks/894-ccbbbd33f08193c2.js",
-      "static/chunks/app/gallery/page-4d6713f639098aac.js"
+      "static/chunks/app/about/page-e5b3d24de3866344.js"
     ],
     "/page": [
       "static/chunks/webpack-55937cd9e2d69b86.js",
@@ -49,7 +40,16 @@
       "static/chunks/main-app-595f1d1ed6aaa130.js",
       "static/chunks/461-10126da38d4cd367.js",
       "static/chunks/894-ccbbbd33f08193c2.js",
-      "static/chunks/app/page-ff7d6b4360d58524.js"
+      "static/chunks/app/page-09eac52b10001ec2.js"
+    ],
+    "/gallery/page": [
+      "static/chunks/webpack-55937cd9e2d69b86.js",
+      "static/chunks/4bd1b696-36cfac4c219383fd.js",
+      "static/chunks/517-7d9171509f790edc.js",
+      "static/chunks/main-app-595f1d1ed6aaa130.js",
+      "static/chunks/461-10126da38d4cd367.js",
+      "static/chunks/894-ccbbbd33f08193c2.js",
+      "static/chunks/app/gallery/page-4d6713f639098aac.js"
     ],
     "/photo/[id]/page": [
       "static/chunks/webpack-55937cd9e2d69b86.js",
