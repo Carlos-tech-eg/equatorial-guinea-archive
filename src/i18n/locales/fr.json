@@ -66,8 +66,14 @@
   "biografias": {
     "label": "Biographies",
     "title": "Figures de l'histoire",
-    "subtitle": "Courtes biographies de personnalités liées à la Guinée équatoriale et à son histoire coloniale et post-indépendance.",
+    "subtitle": "Courtes biographies organisées par domaine : culture, musique, personnalités historiques et politique.",
     "readMore": "Lire la suite",
+    "categories": {
+      "cultura": "Culture",
+      "musica": "Musique",
+      "personasHistoricas": "Personnalités historiques",
+      "politica": "Politique"
+    },
     "persons": {
       "macias": {
         "name": "Francisco Macías Nguema",
@@ -86,6 +92,18 @@
         "dates": "1778–1968",
         "role": "Contexte institutionnel",
         "bio": "Pendant près de deux siècles, le territoire de la Guinée équatoriale (Río Muni, Fernando Pó et dépendances) fut sous administration coloniale espagnole. La documentation photographique et archivistique de cette période constitue une source essentielle pour l'étude de l'histoire locale."
+      },
+      "tradiciones": {
+        "name": "Traditions et patrimoine culturel",
+        "dates": "XIXe–XXe siècle",
+        "role": "Culture et identité",
+        "bio": "La diversité ethnique de la Guinée équatoriale (fang, bubi, ndowe, annobonais, bisío, entre autres) a donné naissance à un riche patrimoine de rites, récits oraux, danses et cérémonies. Les traditions pendant la période coloniale reflètent tant la persistance des cultures locales que les influences du contact avec l'Europe."
+      },
+      "makossa": {
+        "name": "Musique et rythmes traditionnels",
+        "dates": "XXe siècle",
+        "role": "Expression musicale",
+        "bio": "La musique en Guinée équatoriale combine instruments et rythmes autochtones avec des influences africaines et coloniales. Les genres traditionnels, ainsi que l'adoption et l'adaptation de styles modernes, font partie du patrimoine immatériel du pays et de sa projection dans la diaspora."
       }
     }
   }

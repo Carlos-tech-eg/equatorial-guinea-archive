@@ -66,8 +66,14 @@
   "biografias": {
     "label": "Biografías",
     "title": "Personajes de la historia",
-    "subtitle": "Breves biografías de figuras vinculadas a Guinea Ecuatorial y su historia colonial e independencia.",
+    "subtitle": "Breves biografías organizadas por ámbito: cultura, música, personas históricas y política.",
     "readMore": "Leer más",
+    "categories": {
+      "cultura": "Cultura",
+      "musica": "Música",
+      "personasHistoricas": "Personas históricas",
+      "politica": "Política"
+    },
     "persons": {
       "macias": {
         "name": "Francisco Macías Nguema",
@@ -86,6 +92,18 @@
         "dates": "1778–1968",
         "role": "Contexto institucional",
         "bio": "Durante casi dos siglos, el territorio de Guinea Ecuatorial (Río Muni, Fernando Pó y dependencias) estuvo bajo administración colonial española. La documentación fotográfica y archivística de este período constituye una fuente esencial para el estudio de la historia local."
+      },
+      "tradiciones": {
+        "name": "Tradiciones y patrimonio cultural",
+        "dates": "Siglos XIX–XX",
+        "role": "Cultura y identidad",
+        "bio": "La diversidad étnica de Guinea Ecuatorial (fang, bubi, ndowe, annoboneses, bisío, entre otros) ha dado lugar a un rico patrimonio de ritos, narrativa oral, danzas y ceremonias. Las tradiciones durante el período colonial reflejan tanto la persistencia de las culturas locales como las influencias del contacto con Europa."
+      },
+      "makossa": {
+        "name": "Música y ritmos tradicionales",
+        "dates": "Siglo XX",
+        "role": "Expresión musical",
+        "bio": "La música en Guinea Ecuatorial combina instrumentos y ritmos autóctonos con influencias africanas y coloniales. Los géneros tradicionales, así como la adopción y adaptación de estilos modernos, forman parte del patrimonio inmaterial del país y de su proyección en la diáspora."
       }
     }
   }
