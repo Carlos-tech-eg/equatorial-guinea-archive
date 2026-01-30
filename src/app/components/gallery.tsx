@@ -9,24 +9,24 @@ export function Gallery() {
   const { t, tp } = useLocale();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full min-w-0">
       <header className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-14 lg:py-20 relative">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-14 lg:py-20 relative max-w-[100vw]">
           <p className="text-[13px] sm:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6">
             {t('gallery.label')}
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-foreground mb-6 sm:mb-8">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-foreground mb-4 sm:mb-8 break-words">
             {t('gallery.title')}
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl w-full leading-relaxed">
             {t('gallery.subtitle')}
           </p>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 lg:gap-14">
           {photos.map((photo, index) => (
             <Link
               key={photo.id}
@@ -47,7 +47,7 @@ export function Gallery() {
                   </div>
                 </div>
 
-                <div className="p-6 sm:p-8 space-y-2 sm:space-y-3">
+                <div className="p-4 sm:p-6 md:p-8 space-y-2 sm:space-y-3">
                   <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.15em]">
                     <span>{photo.year}</span>
                     <span className="text-border">·</span>

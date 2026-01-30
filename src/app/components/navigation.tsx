@@ -24,42 +24,42 @@ export function Navigation() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 shadow-sm">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-4 sm:py-5 lg:py-6">
-          <Link href="/" className="no-underline flex-shrink-0 group">
-            <h1 className="font-serif text-2xl sm:text-3xl font-light tracking-tight text-foreground group-hover:text-accent-gold transition-colors">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-10 max-w-[100vw]">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 py-3 sm:py-5 lg:py-6">
+          <Link href="/" className="no-underline flex-shrink-0 group min-w-0">
+            <h1 className="font-serif text-xl sm:text-2xl md:text-3xl font-light tracking-tight text-foreground group-hover:text-accent-gold transition-colors break-words">
               {t('nav.brand')}
-              <span className="block mt-0.5 text-xl sm:text-2xl italic text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="block mt-0.5 text-lg sm:text-xl md:text-2xl italic text-muted-foreground group-hover:text-foreground transition-colors">
                 {t('nav.brandSub')}
               </span>
             </h1>
           </Link>
 
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8">
-            <ul className="flex gap-1 sm:gap-2 list-none m-0 p-0">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6 md:gap-8 min-w-0">
+            <ul className="flex flex-wrap gap-1 sm:gap-2 list-none m-0 p-0">
               <li>
-                <Link href="/" className={navLinkClass('/')}>
+                <Link href="/" className={`${navLinkClass('/')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
                   {t('nav.home')}
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className={navLinkClass('/gallery')}>
+                <Link href="/gallery" className={`${navLinkClass('/gallery')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
                   {t('nav.gallery')}
                 </Link>
               </li>
               <li>
-                <Link href="/biografias" className={navLinkClass('/biografias')}>
+                <Link href="/biografias" className={`${navLinkClass('/biografias')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
                   {t('nav.biografias')}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className={navLinkClass('/about')}>
+                <Link href="/about" className={`${navLinkClass('/about')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
                   {t('nav.about')}
                 </Link>
               </li>
             </ul>
 
-            <div className="flex items-center gap-1 border-l border-border pl-6 sm:pl-8">
+            <div className="flex items-center gap-1 border-t border-border pt-3 sm:pt-0 sm:border-t-0 sm:border-l sm:border-border sm:pl-6 md:pl-8">
               <LanguageSwitcher locale={locale} setLocale={setLocale} />
               <button
                 type="button"

@@ -9,7 +9,7 @@ export function About() {
     <div className="min-h-screen">
       <header className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-14 lg:py-20 relative">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-14 lg:py-20 relative max-w-[100vw]">
           <p className="text-[13px] sm:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6">
             {t('about.label')}
           </p>
@@ -19,9 +19,9 @@ export function About() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-24">
-        <div className="max-w-4xl lg:max-w-5xl space-y-12 lg:space-y-16">
-          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
+        <div className="max-w-4xl lg:max-w-5xl space-y-8 sm:space-y-12 lg:space-y-16 w-full min-w-0">
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -40,7 +40,7 @@ export function About() {
           </div>
           </section>
 
-          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -84,7 +84,7 @@ export function About() {
           </div>
           </section>
 
-          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -121,7 +121,7 @@ export function About() {
           </div>
           </section>
 
-          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">

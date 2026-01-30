@@ -15,7 +15,7 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
 
   if (!photo) {
     return (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-16 sm:py-24 text-center">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-12 sm:py-24 text-center max-w-[100vw]">
         <h2 className="font-serif text-3xl sm:text-4xl font-light text-foreground mb-6">
           {t('photo.notFound')}
         </h2>
@@ -35,9 +35,9 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
   const source = tp(photo.id, 'source');
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full min-w-0">
       <header className="border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-4 sm:py-6">
+        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-4 sm:py-6 max-w-[100vw]">
           <Link
             href="/gallery"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-colors"
@@ -48,29 +48,29 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16">
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16 xl:gap-20">
-          <div className="lg:col-span-7">
+      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-12 lg:py-16 max-w-[100vw]">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 xl:gap-20">
+          <div className="lg:col-span-7 min-w-0">
             <div className="lg:sticky lg:top-24">
-              <p className="mb-4 sm:mb-6 text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.2em]">
+              <p className="mb-3 sm:mb-6 text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.2em]">
                 {String(photoIndex + 1).padStart(2, '0')} {t('photo.of')}{' '}
                 {String(photos.length).padStart(2, '0')}
               </p>
-              <div className="bg-card border border-border p-4 sm:p-6 lg:p-8 xl:p-10">
-                <div className="bg-muted/50">
+              <div className="bg-card border border-border p-3 sm:p-6 lg:p-8 xl:p-10 rounded-xl overflow-hidden">
+                <div className="bg-muted/50 min-w-0">
                   <ImageWithFallback
                     src={photo.imageUrl}
                     alt={title}
-                    className="w-full h-auto"
+                    className="w-full h-auto max-w-full"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 space-y-8 sm:space-y-10">
+          <div className="lg:col-span-5 space-y-6 sm:space-y-10 min-w-0">
             <div>
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-foreground mb-4 sm:mb-6 leading-tight">
+              <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-4 sm:mb-6 leading-tight break-words">
                 {title}
               </h1>
               <div className="w-12 sm:w-16 h-px bg-border" />
