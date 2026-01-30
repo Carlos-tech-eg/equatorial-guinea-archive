@@ -2,6 +2,7 @@
   "nav": {
     "home": "Accueil",
     "gallery": "Galerie",
+    "biografias": "Biographies",
     "about": "À propos",
     "brand": "Guinée équatoriale",
     "brandSub": "Archives"
@@ -61,5 +62,31 @@
   },
   "footer": {
     "tagline": "Un dépôt numérique pour la recherche historique"
+  },
+  "biografias": {
+    "label": "Biographies",
+    "title": "Figures de l'histoire",
+    "subtitle": "Courtes biographies de personnalités liées à la Guinée équatoriale et à son histoire coloniale et post-indépendance.",
+    "readMore": "Lire la suite",
+    "persons": {
+      "macias": {
+        "name": "Francisco Macías Nguema",
+        "dates": "1924–1979",
+        "role": "Premier président de Guinée équatoriale",
+        "bio": "Francisco Macías Nguema (né Mez-m Nguema) fut le premier président de la Guinée équatoriale après l'indépendance de l'Espagne en 1968. Il gouverna de manière autoritaire jusqu'à son renversement en 1979. Son mandat fut marqué par la répression et l'isolement international."
+      },
+      "ntutumu": {
+        "name": "Miguel Ntutumu",
+        "dates": "XXe siècle",
+        "role": "Figure historique et politique",
+        "bio": "Miguel Ntutumu fut une figure importante dans le contexte politique et social de la Guinée équatoriale pendant la transition coloniale et postcoloniale. Son parcours reflète les tensions et les changements de cette époque."
+      },
+      "colonial": {
+        "name": "Administration coloniale espagnole",
+        "dates": "1778–1968",
+        "role": "Contexte institutionnel",
+        "bio": "Pendant près de deux siècles, le territoire de la Guinée équatoriale (Río Muni, Fernando Pó et dépendances) fut sous administration coloniale espagnole. La documentation photographique et archivistique de cette période constitue une source essentielle pour l'étude de l'histoire locale."
+      }
+    }
   }
 }

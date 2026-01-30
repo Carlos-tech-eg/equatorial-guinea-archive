@@ -2,6 +2,7 @@
   "nav": {
     "home": "Inicio",
     "gallery": "Galería",
+    "biografias": "Biografías",
     "about": "Acerca de",
     "brand": "Guinea Ecuatorial",
     "brandSub": "Archivos"
@@ -61,5 +62,31 @@
   },
   "footer": {
     "tagline": "Un repositorio digital para la investigación histórica"
+  },
+  "biografias": {
+    "label": "Biografías",
+    "title": "Personajes de la historia",
+    "subtitle": "Breves biografías de figuras vinculadas a Guinea Ecuatorial y su historia colonial e independencia.",
+    "readMore": "Leer más",
+    "persons": {
+      "macias": {
+        "name": "Francisco Macías Nguema",
+        "dates": "1924–1979",
+        "role": "Primer presidente de Guinea Ecuatorial",
+        "bio": "Francisco Macías Nguema (nacido Mez-m Nguema) fue el primer presidente de Guinea Ecuatorial tras la independencia de España en 1968. Gobernó de forma autoritaria hasta su derrocamiento en 1979. Su mandato quedó marcado por la represión y el aislamiento internacional."
+      },
+      "ntutumu": {
+        "name": "Miguel Ntutumu",
+        "dates": "Siglo XX",
+        "role": "Figura histórica y política",
+        "bio": "Miguel Ntutumu fue una figura relevante en el contexto político y social de Guinea Ecuatorial durante la transición colonial y poscolonial. Su trayectoria refleja las tensiones y cambios de esa época."
+      },
+      "colonial": {
+        "name": "Administración colonial española",
+        "dates": "1778–1968",
+        "role": "Contexto institucional",
+        "bio": "Durante casi dos siglos, el territorio de Guinea Ecuatorial (Río Muni, Fernando Pó y dependencias) estuvo bajo administración colonial española. La documentación fotográfica y archivística de este período constituye una fuente esencial para el estudio de la historia local."
+      }
+    }
   }
 }

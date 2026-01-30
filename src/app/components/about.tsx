@@ -7,9 +7,10 @@ export function About() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-14 lg:py-20">
-          <p className="text-[13px] sm:text-[15px] uppercase tracking-[0.2em] text-muted-foreground mb-4 sm:mb-6">
+      <header className="relative overflow-hidden border-b border-border">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-14 lg:py-20 relative">
+          <p className="text-[13px] sm:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6">
             {t('about.label')}
           </p>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-foreground">
@@ -19,13 +20,14 @@ export function About() {
       </header>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-24">
-        <div className="max-w-4xl lg:max-w-5xl space-y-16 sm:space-y-20 lg:space-y-24">
-          <section className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
-            <div className="lg:col-span-4">
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
-                {t('about.missionTitle')}
-              </h3>
-              <div className="w-12 sm:w-16 h-px bg-border" />
+        <div className="max-w-4xl lg:max-w-5xl space-y-12 lg:space-y-16">
+          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+            <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
+                  {t('about.missionTitle')}
+                </h3>
+                <div className="w-12 sm:w-16 h-0.5 bg-accent-gold/60 rounded-full" />
             </div>
             <div className="lg:col-span-8 space-y-6">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
@@ -35,16 +37,16 @@ export function About() {
                 {t('about.mission2')}
               </p>
             </div>
+          </div>
           </section>
 
-          <div className="h-px bg-border" />
-
-          <section className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
-            <div className="lg:col-span-4">
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
-                {t('about.sourcesTitle')}
-              </h3>
-              <div className="w-12 sm:w-16 h-px bg-border" />
+          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+            <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
+                  {t('about.sourcesTitle')}
+                </h3>
+                <div className="w-12 sm:w-16 h-0.5 bg-accent-gold/60 rounded-full" />
             </div>
             <div className="lg:col-span-8 space-y-8 sm:space-y-10">
               <div>
@@ -79,16 +81,16 @@ export function About() {
                 </p>
               </div>
             </div>
+          </div>
           </section>
 
-          <div className="h-px bg-border" />
-
-          <section className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
-            <div className="lg:col-span-4">
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
-                {t('about.readingTitle')}
-              </h3>
-              <div className="w-12 sm:w-16 h-px bg-border" />
+          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+            <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
+                  {t('about.readingTitle')}
+                </h3>
+                <div className="w-12 sm:w-16 h-0.5 bg-accent-gold/60 rounded-full" />
             </div>
             <div className="lg:col-span-8 space-y-6 sm:space-y-8">
               <div className="pl-6 sm:pl-8 border-l-2 border-border">
@@ -116,16 +118,16 @@ export function About() {
                 <p className="text-sm text-muted-foreground/80 mt-2">Lanham: Scarecrow Press</p>
               </div>
             </div>
+          </div>
           </section>
 
-          <div className="h-px bg-border" />
-
-          <section className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
-            <div className="lg:col-span-4">
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
-                {t('about.contactTitle')}
-              </h3>
-              <div className="w-12 sm:w-16 h-px bg-border" />
+          <section className="rounded-2xl border border-border bg-card p-8 sm:p-10 lg:p-12 shadow-sm">
+            <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
+                  {t('about.contactTitle')}
+                </h3>
+                <div className="w-12 sm:w-16 h-0.5 bg-accent-gold/60 rounded-full" />
             </div>
             <div className="lg:col-span-8 space-y-6">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
@@ -143,6 +145,7 @@ export function About() {
                 </a>
               </div>
             </div>
+          </div>
           </section>
         </div>
       </div>
