@@ -90,6 +90,44 @@ export function BiografiaDetail({ category, id }: BiografiaDetailProps) {
               </p>
             </div>
 
+            {item.works && item.works.length > 0 && (
+              <div className="pt-6 sm:pt-8 border-t border-border">
+                <h2 className="font-serif text-xl sm:text-2xl font-light text-foreground mb-2">
+                  {t('biografias.obrasTitle')}
+                </h2>
+                <p className="text-sm text-muted-foreground mb-6">
+                  {t('biografias.obrasSubtitle')}
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  {item.works.map((work) => (
+                    <article
+                      key={work.id}
+                      className="rounded-xl border border-border bg-card overflow-hidden shadow-sm hover:border-accent-gold/30 transition-colors"
+                    >
+                      <div className="aspect-[4/3] bg-muted/30">
+                        <ImageWithFallback
+                          src={work.imageUrl}
+                          alt={t(`biografias.persons.${item.id}.works.${work.id}.title`)}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-4">
+                        {work.year && (
+                          <p className="text-xs text-accent-gold font-medium mb-1">{work.year}</p>
+                        )}
+                        <h3 className="font-serif text-lg font-light text-foreground mb-2">
+                          {t(`biografias.persons.${item.id}.works.${work.id}.title`)}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {t(`biografias.persons.${item.id}.works.${work.id}.description`)}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row gap-6 sm:gap-8">
               {prevItem && (
                 <Link

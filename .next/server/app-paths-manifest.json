@@ -1,8 +1,6 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
   "/biografias/page": "app/biografias/page.js",
   "/about/page": "app/about/page.js",
-  "/page": "app/page.js",
-  "/gallery/page": "app/gallery/page.js",
-  "/photo/[id]/page": "app/photo/[id]/page.js"
+  "/gallery/page": "app/gallery/page.js"
 }

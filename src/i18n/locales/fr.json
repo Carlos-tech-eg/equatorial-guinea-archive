@@ -71,6 +71,8 @@
     "viewAll": "Voir tout",
     "backToBiografias": "Biographies",
     "backToCategory": "Retour à la catégorie",
+    "obrasTitle": "Œuvres",
+    "obrasSubtitle": "Sélection d'œuvres et de travaux",
     "categories": {
       "cultura": "Culture",
       "musica": "Musique",
@@ -130,19 +132,33 @@
         "name": "Nene Bantu",
         "dates": "Actif",
         "role": "Artiste et musicien",
-        "bio": "Nene Bantu est l'un des référents de la musique équatoguinéenne. Son travail fusionne les rythmes traditionnels avec les sonorités modernes et a contribué à promouvoir la culture musicale de la Guinée équatoriale dans et hors du pays."
+        "bio": "Nene Bantu est l'un des référents de la musique équatoguinéenne. Son travail fusionne les rythmes traditionnels avec les sonorités modernes et a contribué à promouvoir la culture musicale de la Guinée équatoriale dans et hors du pays.",
+        "works": {
+          "album-1": { "title": "Premier album", "description": "Premier disque qui fusionne makossa et sonorités modernes, bien accueilli en Guinée équatoriale et dans la diaspora." },
+          "album-2": { "title": "Rythmes du pays", "description": "Deuxième album avec des collaborations locales et internationales, consolidant sa projection sur le continent." },
+          "single-1": { "title": "Single récent", "description": "Dernière sortie qui garde la racine traditionnelle avec une production actuelle." }
+        }
       },
       "maele": {
         "name": "Maele",
         "dates": "Actif",
         "role": "Chanteur et artiste",
-        "bio": "Maele est une figure marquante de la scène musicale de Guinée équatoriale. Son parcours reflète la richesse des genres locaux et le lien entre tradition et musique contemporaine."
+        "bio": "Maele est une figure marquante de la scène musicale de Guinée équatoriale. Son parcours reflète la richesse des genres locaux et le lien entre tradition et musique contemporaine.",
+        "works": {
+          "disco-1": { "title": "Disque principal", "description": "Œuvre qui rassemble des chansons représentatives de son style et de la musique équatoguinéenne." },
+          "disco-2": { "title": "Deuxième disque", "description": "Suite de sa carrière avec des titres diffusés sur les radios et festivals du pays." }
+        }
       },
       "fifi-la-mirey": {
         "name": "Fifi la Mirey",
         "dates": "Actif",
         "role": "Chanteuse et artiste",
-        "bio": "Fifi la Mirey est l'une des voix reconnues de la musique équatoguinéenne. Son répertoire mêle rythmes traditionnels et modernes, contribuant à la visibilité de la culture et de la musique du pays."
+        "bio": "Fifi la Mirey est l'une des voix reconnues de la musique équatoguinéenne. Son répertoire mêle rythmes traditionnels et modernes, contribuant à la visibilité de la culture et de la musique du pays.",
+        "works": {
+          "obra-1": { "title": "Première production", "description": "Débuts de sa carrière avec des titres qui l'ont fait connaître sur la scène locale." },
+          "obra-2": { "title": "Travail de maturité", "description": "Album qui consolide sa voix et son répertoire entre tradition et modernité." },
+          "obra-3": { "title": "Dernière sortie", "description": "Production récente qui reflète son évolution artistique et la musique actuelle de Guinée équatoriale." }
+        }
       }
     }
   }

@@ -1,10 +1,17 @@
 export type BiografiaCategory = 'cultura' | 'musica' | 'personasHistoricas' | 'politica';
 
+export interface BiografiaWork {
+  id: string;
+  imageUrl: string;
+  year?: string;
+}
+
 export interface BiografiaItem {
   id: string;
   category: BiografiaCategory;
   imageUrl: string;
   year?: string;
+  works?: BiografiaWork[];
 }
 
 export const BIOGRAFIA_CATEGORIES: BiografiaCategory[] = [
@@ -69,18 +76,32 @@ export const biografiaItems: BiografiaItem[] = [
     category: 'musica',
     imageUrl: MOCK_IMAGES.musica.neneBantu,
     year: 'Activo',
+    works: [
+      { id: 'album-1', imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80', year: '2019' },
+      { id: 'album-2', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80', year: '2021' },
+      { id: 'single-1', imageUrl: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80', year: '2023' },
+    ],
   },
   {
     id: 'maele',
     category: 'musica',
     imageUrl: MOCK_IMAGES.musica.maele,
     year: 'Activo',
+    works: [
+      { id: 'disco-1', imageUrl: 'https://images.unsplash.com/photo-1545128485-c400e7702796?w=600&q=80', year: '2020' },
+      { id: 'disco-2', imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80', year: '2022' },
+    ],
   },
   {
     id: 'fifi-la-mirey',
     category: 'musica',
     imageUrl: MOCK_IMAGES.musica.fifiLaMirey,
     year: 'Activo',
+    works: [
+      { id: 'obra-1', imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80', year: '2018' },
+      { id: 'obra-2', imageUrl: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80', year: '2021' },
+      { id: 'obra-3', imageUrl: 'https://images.unsplash.com/photo-1545128485-c400e7702796?w=600&q=80', year: '2024' },
+    ],
   },
   {
     id: 'makossa',
