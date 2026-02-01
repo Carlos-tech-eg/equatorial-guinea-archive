@@ -36,7 +36,7 @@ export function BiografiasWidget() {
         {CATEGORIES.map(({ key, personIds }) => (
           <Link
             key={key}
-            href="/biografias"
+            href={`/biografias/${key}`}
             className="group block rounded-lg border border-border bg-muted/30 hover:bg-muted/50 hover:border-accent-gold/30 p-4 transition-all duration-200 no-underline"
           >
             <p className="text-xs uppercase tracking-[0.15em] text-accent-gold font-medium mb-2">

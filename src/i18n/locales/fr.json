@@ -68,6 +68,9 @@
     "title": "Figures de l'histoire",
     "subtitle": "Courtes biographies organisées par domaine : culture, musique, personnalités historiques et politique.",
     "readMore": "Lire la suite",
+    "viewAll": "Voir tout",
+    "backToBiografias": "Biographies",
+    "backToCategory": "Retour à la catégorie",
     "categories": {
       "cultura": "Culture",
       "musica": "Musique",
@@ -104,6 +107,42 @@
         "dates": "XXe siècle",
         "role": "Expression musicale",
         "bio": "La musique en Guinée équatoriale combine instruments et rythmes autochtones avec des influences africaines et coloniales. Les genres traditionnels, ainsi que l'adoption et l'adaptation de styles modernes, font partie du patrimoine immatériel du pays et de sa projection dans la diaspora."
+      },
+      "objetos-culturales": {
+        "name": "Objets culturels",
+        "dates": "XIXe–XXe siècle",
+        "role": "Patrimoine matériel",
+        "bio": "Objets à usage rituel, quotidien et artistique qui font partie du patrimoine culturel de la Guinée équatoriale. Masques, instruments de musique, textiles et poteries documentent les traditions des peuples fang, bubi, ndowe et annobonais."
+      },
+      "artista-ritmos": {
+        "name": "Artistes et rythmes",
+        "dates": "XXe siècle",
+        "role": "Musiciens et créateurs",
+        "bio": "Interprètes et créateurs qui ont façonné la musique traditionnelle et moderne de la Guinée équatoriale. Leurs rythmes et chansons reflètent l'identité culturelle et l'histoire du pays."
+      },
+      "mascaras-fang": {
+        "name": "Masques fang",
+        "dates": "XIXe–XXe siècle",
+        "role": "Art rituel et cérémoniel",
+        "bio": "Les masques fang font partie du patrimoine rituel et artistique des peuples fang de Guinée équatoriale. Ils sont utilisés dans les cérémonies d'initiation, les funérailles et les représentations du pouvoir spirituel. Ils sont un symbole reconnu de la culture équatoguinéenne."
+      },
+      "nene-bantu": {
+        "name": "Nene Bantu",
+        "dates": "Actif",
+        "role": "Artiste et musicien",
+        "bio": "Nene Bantu est l'un des référents de la musique équatoguinéenne. Son travail fusionne les rythmes traditionnels avec les sonorités modernes et a contribué à promouvoir la culture musicale de la Guinée équatoriale dans et hors du pays."
+      },
+      "maele": {
+        "name": "Maele",
+        "dates": "Actif",
+        "role": "Chanteur et artiste",
+        "bio": "Maele est une figure marquante de la scène musicale de Guinée équatoriale. Son parcours reflète la richesse des genres locaux et le lien entre tradition et musique contemporaine."
+      },
+      "fifi-la-mirey": {
+        "name": "Fifi la Mirey",
+        "dates": "Actif",
+        "role": "Chanteuse et artiste",
+        "bio": "Fifi la Mirey est l'une des voix reconnues de la musique équatoguinéenne. Son répertoire mêle rythmes traditionnels et modernes, contribuant à la visibilité de la culture et de la musique du pays."
       }
     }
   }

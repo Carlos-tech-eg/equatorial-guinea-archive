@@ -68,6 +68,9 @@
     "title": "Personajes de la historia",
     "subtitle": "Breves biografías organizadas por ámbito: cultura, música, personas históricas y política.",
     "readMore": "Leer más",
+    "viewAll": "Ver todos",
+    "backToBiografias": "Biografías",
+    "backToCategory": "Volver a la categoría",
     "categories": {
       "cultura": "Cultura",
       "musica": "Música",
@@ -104,6 +107,42 @@
         "dates": "Siglo XX",
         "role": "Expresión musical",
         "bio": "La música en Guinea Ecuatorial combina instrumentos y ritmos autóctonos con influencias africanas y coloniales. Los géneros tradicionales, así como la adopción y adaptación de estilos modernos, forman parte del patrimonio inmaterial del país y de su proyección en la diáspora."
+      },
+      "objetos-culturales": {
+        "name": "Objetos culturales",
+        "dates": "Siglos XIX–XX",
+        "role": "Patrimonio material",
+        "bio": "Objetos de uso ritual, cotidiano y artístico que forman parte del patrimonio cultural de Guinea Ecuatorial. Incluyen máscaras, instrumentos musicales, tejidos y piezas de cerámica que documentan las tradiciones de los pueblos fang, bubi, ndowe y annobonés."
+      },
+      "artista-ritmos": {
+        "name": "Artistas y ritmos",
+        "dates": "Siglo XX",
+        "role": "Músicos y creadores",
+        "bio": "Intérpretes y creadores que han dado forma a la música tradicional y moderna de Guinea Ecuatorial. Sus ritmos y canciones reflejan la identidad cultural y la historia del país."
+      },
+      "mascaras-fang": {
+        "name": "Máscaras fang",
+        "dates": "Siglos XIX–XX",
+        "role": "Arte ritual y ceremonial",
+        "bio": "Las máscaras fang forman parte del patrimonio ritual y artístico de los pueblos fang de Guinea Ecuatorial. Se utilizan en ceremonias de iniciación, funerales y representaciones de poder espiritual. Son un símbolo reconocido de la cultura ecuatoguineana."
+      },
+      "nene-bantu": {
+        "name": "Nene Bantu",
+        "dates": "Activo",
+        "role": "Artista y músico",
+        "bio": "Nene Bantu es uno de los referentes de la música ecuatoguineana. Su trabajo fusiona ritmos tradicionales con sonidos modernos y ha contribuido a proyectar la cultura musical de Guinea Ecuatorial dentro y fuera del país."
+      },
+      "maele": {
+        "name": "Maele",
+        "dates": "Activo",
+        "role": "Cantante y artista",
+        "bio": "Maele es una figura destacada de la escena musical de Guinea Ecuatorial. Su trayectoria refleja la riqueza de los géneros locales y la conexión entre la tradición y la música contemporánea."
+      },
+      "fifi-la-mirey": {
+        "name": "Fifi la Mirey",
+        "dates": "Activo",
+        "role": "Cantante y artista",
+        "bio": "Fifi la Mirey es una de las voces reconocidas de la música ecuatoguineana. Su repertorio abarca ritmos tradicionales y modernos, contribuyendo a la visibilidad de la cultura y la música del país."
       }
     }
   }

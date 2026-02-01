@@ -1,13 +1,16 @@
 'use client';
 
+import Link from 'next/link';
 import { useLocale } from '@/app/providers';
+import { getItemsByCategory, type BiografiaCategory } from '@/data/biografias';
+import { BiografiaCard } from '@/app/components/biografia-card';
 
-const CATEGORIES = [
-  { key: 'cultura' as const, personIds: ['tradiciones'] },
-  { key: 'musica' as const, personIds: ['makossa'] },
-  { key: 'personasHistoricas' as const, personIds: ['ntutumu', 'colonial'] },
-  { key: 'politica' as const, personIds: ['macias'] },
-] as const;
+const CATEGORY_KEYS: BiografiaCategory[] = [
+  'cultura',
+  'musica',
+  'personasHistoricas',
+  'politica',
+];
 
 export function Biografias() {
   const { t } = useLocale();
@@ -30,38 +33,31 @@ export function Biografias() {
       </header>
 
       <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
-        <div className="space-y-12 sm:space-y-16 lg:space-y-20 max-w-4xl w-full min-w-0">
-          {CATEGORIES.map(({ key, personIds }) => (
-            <section key={key} className="w-full min-w-0">
-              <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-light text-foreground mb-6 sm:mb-8 pb-3 border-b border-border text-accent-gold">
-                {t(`biografias.categories.${key}`)}
-              </h3>
-              <div className="grid gap-6 sm:gap-8 lg:gap-10">
-                {personIds.map((id) => (
-                  <article
-                    key={id}
-                    className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-8 md:p-10 shadow-sm hover:shadow-md hover:border-accent-gold/20 transition-all duration-300 w-full min-w-0"
+        <div className="space-y-12 sm:space-y-16 lg:space-y-20 max-w-5xl w-full min-w-0">
+          {CATEGORY_KEYS.map((category) => {
+            const items = getItemsByCategory(category);
+            if (items.length === 0) return null;
+            return (
+              <section key={category} className="w-full min-w-0">
+                <div className="flex flex-wrap items-baseline justify-between gap-4 mb-6 sm:mb-8">
+                  <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-light text-foreground pb-3 border-b border-border text-accent-gold">
+                    {t(`biografias.categories.${category}`)}
+                  </h3>
+                  <Link
+                    href={`/biografias/${category}`}
+                    className="text-sm font-medium text-accent-gold hover:text-accent-gold-muted uppercase tracking-[0.1em] transition-colors"
                   >
-                    <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                      <h4 className="font-serif text-xl sm:text-2xl font-light text-foreground">
-                        {t(`biografias.persons.${id}.name`)}
-                      </h4>
-                      <span className="text-sm text-accent-gold font-medium">
-                        {t(`biografias.persons.${id}.dates`)}
-                      </span>
-                    </div>
-                    <p className="text-sm uppercase tracking-[0.15em] text-muted-foreground mb-4">
-                      {t(`biografias.persons.${id}.role`)}
-                    </p>
-                    <div className="w-12 h-0.5 bg-accent-gold/60 rounded-full mb-6" />
-                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                      {t(`biografias.persons.${id}.bio`)}
-                    </p>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ))}
+                    {t('biografias.viewAll')}
+                  </Link>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                  {items.map((item) => (
+                    <BiografiaCard key={item.id} item={item} category={category} />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
     </div>
