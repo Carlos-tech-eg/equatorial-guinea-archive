@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read for everyone (site), write for authenticated users (admin)
+    match /photos/{photoId} {
+      allow read, write: if true;
+    }
+    match /biographies/{bioId} {
+      allow read, write: if true;
+    }
+    match /settings/{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

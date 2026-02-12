@@ -3,16 +3,27 @@
 import Link from 'next/link';
 import { useLocale } from '@/app/providers';
 import { ArrowLeft } from 'lucide-react';
-import { getItemsByCategory, type BiografiaCategory } from '@/data/biografias';
+// import { getItemsByCategory, type BiografiaCategory } from '@/data/biografias';
 import { BiografiaCard } from '@/app/components/biografia-card';
+import { useBiographies } from '@/hooks/useContent';
 
 type BiografiaCategoryProps = {
-  category: BiografiaCategory;
+  category: string;
 };
 
 export function BiografiaCategoryPage({ category }: BiografiaCategoryProps) {
   const { t } = useLocale();
-  const items = getItemsByCategory(category);
+  const { items: allItems, loading } = useBiographies();
+
+  const items = allItems.filter(i => i.category === category);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-gold"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full min-w-0">

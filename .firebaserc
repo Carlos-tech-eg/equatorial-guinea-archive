@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "admin-panel-archivoseg"
+  },
+  "targets": {
+    "admin-panel-archivoseg": {
+      "storage": {
+        "main-storage": [
+          "admin-panel-archivoseg.firebasestorage.app"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

@@ -9,6 +9,7 @@ import {
   getPhotoTranslation,
   getTranslation,
 } from '@/i18n/translations';
+import { SiteSettingsProvider } from '@/context/SiteSettingsContext';
 
 type LocaleContextValue = {
   locale: Locale;
@@ -57,7 +58,9 @@ function LocaleProviderInner({ children }: { children: React.ReactNode }) {
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextThemesProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-      <LocaleProviderInner>{children}</LocaleProviderInner>
+      <SiteSettingsProvider>
+        <LocaleProviderInner>{children}</LocaleProviderInner>
+      </SiteSettingsProvider>
     </NextThemesProvider>
   );
 }

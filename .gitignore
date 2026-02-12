@@ -39,3 +39,7 @@ Thumbs.db
 
 # Subproject (separate app)
 portfolio-admin/
+equatorial-guinea-archive/
+
+# Lint output
+lint_*.txt

@@ -21,6 +21,7 @@ export function Footer() {
             <a href="/gallery" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors">{t('nav.gallery')}</a>
             <a href="/biografias" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors">{t('nav.biografias')}</a>
             <a href="/about" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors">{t('nav.about')}</a>
+            <a href="/admin" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-accent-gold transition-colors">Admin</a>
           </div>
         </div>
       </div>

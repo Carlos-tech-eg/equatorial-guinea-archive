@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { photos } from '@/data/photos';
+// import { photos } from '@/data/photos';
+import { usePhotos } from '@/hooks/useContent';
 import { ArrowLeft } from 'lucide-react';
 import { useLocale } from '@/app/providers';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
@@ -9,9 +10,19 @@ import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 type PhotoDetailProps = { id: string };
 
 export function PhotoDetail({ id }: PhotoDetailProps) {
-  const { t, tp } = useLocale();
+  const { t } = useLocale();
+  const { photos, loading } = usePhotos();
+
   const photo = photos.find((p) => p.id === id);
   const photoIndex = photos.findIndex((p) => p.id === id);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-gold"></div>
+      </div>
+    );
+  }
 
   if (!photo) {
     return (
@@ -29,10 +40,10 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
     );
   }
 
-  const title = tp(photo.id, 'title');
-  const location = tp(photo.id, 'location');
-  const description = tp(photo.id, 'description');
-  const source = tp(photo.id, 'source');
+  const title = photo.title ?? '';
+  const location = photo.location ?? '';
+  const description = photo.description ?? '';
+  const source = photo.source ?? '';
 
   return (
     <div className="min-h-screen w-full min-w-0">
@@ -59,8 +70,8 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
               <div className="bg-card border border-border p-3 sm:p-6 lg:p-8 xl:p-10 rounded-xl overflow-hidden">
                 <div className="bg-muted/50 min-w-0">
                   <ImageWithFallback
-                    src={photo.imageUrl}
-                    alt={title}
+                    src={photo.imageUrl ?? ''}
+                    alt={title || 'Photo'}
                     className="w-full h-auto max-w-full"
                   />
                 </div>
@@ -82,7 +93,7 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
                   {t('photo.date')}
                 </dt>
                 <dd className="text-lg sm:text-xl font-light text-foreground">
-                  {photo.year}
+                  {photo.year ?? ''}
                 </dd>
               </div>
               <div>
@@ -112,6 +123,17 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
               </p>
             </div>
 
+            {photo.bio && (
+              <div className="pt-6 sm:pt-8 border-t border-border space-y-3 sm:space-y-4">
+                <h2 className="text-[11px] sm:text-[13px] uppercase tracking-[0.2em] text-muted-foreground">
+                  Biografía
+                </h2>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
+                  {photo.bio}
+                </p>
+              </div>
+            )}
+
             <div className="pt-6 sm:pt-8 border-t border-border">
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
                 {photoIndex > 0 && (
@@ -123,7 +145,7 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
                       {t('photo.previous')}
                     </p>
                     <p className="font-serif text-base sm:text-lg text-foreground group-hover:text-muted-foreground transition-colors truncate">
-                      {tp(photos[photoIndex - 1].id, 'title')}
+                      {photos[photoIndex - 1].title}
                     </p>
                   </Link>
                 )}
@@ -136,7 +158,7 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
                       {t('photo.next')}
                     </p>
                     <p className="font-serif text-base sm:text-lg text-foreground group-hover:text-muted-foreground transition-colors truncate">
-                      {tp(photos[photoIndex + 1].id, 'title')}
+                      {photos[photoIndex + 1].title}
                     </p>
                   </Link>
                 )}

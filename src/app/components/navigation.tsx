@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -8,18 +10,22 @@ import type { Locale } from '@/i18n';
 import { Moon, Sun } from 'lucide-react';
 
 export function Navigation() {
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const { theme, setTheme } = useTheme();
   const { t, locale, setLocale } = useLocale();
 
   const isActive = (path: string) => pathname === path;
-  const isDark = theme === 'dark';
+
 
   const navLinkClass = (path: string) =>
-    `no-underline text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-all px-3 py-2 rounded-lg ${
-      isActive(path)
-        ? 'text-accent-gold bg-accent'
-        : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
+    `no-underline text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-all px-3 py-2 rounded-lg ${isActive(path)
+      ? 'text-accent-gold bg-accent'
+      : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
     }`;
 
   return (
@@ -63,11 +69,13 @@ export function Navigation() {
               <LanguageSwitcher locale={locale} setLocale={setLocale} />
               <button
                 type="button"
-                onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                aria-label="Toggle theme"
               >
-                {isDark ? (
+                {!mounted ? (
+                  <div className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+                ) : theme === 'dark' ? (
                   <Sun className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
                 ) : (
                   <Moon className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
@@ -95,11 +103,10 @@ function LanguageSwitcher({
           key={l}
           type="button"
           onClick={() => setLocale(l)}
-          className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium uppercase tracking-wider transition-colors rounded ${
-            locale === l
-              ? 'bg-background text-foreground shadow-sm'
-              : 'text-muted-foreground hover:text-foreground'
-          }`}
+          className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium uppercase tracking-wider transition-colors rounded ${locale === l
+            ? 'bg-background text-foreground shadow-sm'
+            : 'text-muted-foreground hover:text-foreground'
+            }`}
         >
           {l === 'es' ? 'ES' : 'FR'}
         </button>

@@ -3,16 +3,20 @@
 import Link from 'next/link';
 import { useLocale } from '@/app/providers';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import type { BiografiaCategory } from '@/data/biografias';
-import type { BiografiaItem } from '@/data/biografias';
+// import type { BiografiaCategory } from '@/data/biografias';
+// import type { BiografiaItem } from '@/data/biografias';
 
 type BiografiaCardProps = {
-  item: BiografiaItem;
-  category: BiografiaCategory;
+  item: any; // Type from useContent hook, could import it
+  category: string;
 };
 
 export function BiografiaCard({ item, category }: BiografiaCardProps) {
-  const { t } = useLocale();
+  // const { t } = useLocale();
+
+  // Dynamic Properties
+  const name = item.name || item.id;
+  const role = item.category;
 
   return (
     <Link
@@ -23,7 +27,7 @@ export function BiografiaCard({ item, category }: BiografiaCardProps) {
         <div className="relative overflow-hidden aspect-[4/3] bg-muted/30">
           <ImageWithFallback
             src={item.imageUrl}
-            alt={t(`biografias.persons.${item.id}.name`)}
+            alt={name}
             className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
         </div>
@@ -32,10 +36,10 @@ export function BiografiaCard({ item, category }: BiografiaCardProps) {
             {item.year && <span>{item.year}</span>}
           </div>
           <h4 className="font-serif text-lg sm:text-xl font-light text-foreground group-hover:text-accent-gold transition-colors leading-tight line-clamp-2">
-            {t(`biografias.persons.${item.id}.name`)}
+            {name}
           </h4>
           <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
-            {t(`biografias.persons.${item.id}.role`)}
+            {role}
           </p>
         </div>
       </article>
