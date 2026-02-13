@@ -1,27 +1,34 @@
 'use client';
 
 import Link from 'next/link';
-// import { photos } from '@/data/photos';
+import { motion } from 'motion/react';
 import { usePhotos } from '@/hooks/useContent';
 import { useLocale } from '@/app/providers';
-import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { ArchivalImageFrame } from '@/app/components/ArchivalImageFrame';
+
+const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } } };
+const item = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } };
 
 export function Gallery() {
-  const { t, tp } = useLocale();
+  const { t } = useLocale();
   const { photos, loading } = usePhotos();
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-gold"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-gold" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen w-full min-w-0">
-      <header className="relative overflow-hidden border-b border-border">
-        {/* ... header content ... */}
+    <div className="min-h-screen w-full min-w-0" style={{ background: 'var(--archival-bg-subtle)' }}>
+      <motion.header
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+        className="relative overflow-hidden border-b border-border"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-14 lg:py-20 relative max-w-[100vw]">
           <p className="text-[13px] sm:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6">
@@ -34,48 +41,46 @@ export function Gallery() {
             {t('gallery.subtitle')}
           </p>
         </div>
-      </header>
+      </motion.header>
 
-      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 lg:gap-14">
+      <motion.div
+        className="container gallery-container mx-auto px-3 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-24 max-w-[100vw]"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 xl:gap-16">
           {photos.map((photo, index) => (
-            <Link
-              key={photo.id}
-              href={`/photo/${photo.id}`}
-              className="group block no-underline"
-            >
-              <article className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-lg hover:border-accent-gold/20 transition-all duration-300">
-                <div className="relative overflow-hidden">
-                  <div className="aspect-[4/3] bg-muted/30">
-                    <ImageWithFallback
-                      src={photo.imageUrl ?? ''}
-                      alt={photo.title ?? 'Photo'}
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="absolute top-3 right-3 rounded-lg bg-background/90 backdrop-blur-sm px-3 py-1.5 text-xs text-muted-foreground tracking-wider">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-                </div>
-
-                <div className="p-4 sm:p-6 md:p-8 space-y-2 sm:space-y-3">
-                  <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.15em]">
-                    <span>{photo.year ?? ''}</span>
-                    {(photo.year ?? photo.location) && <span className="text-border">·</span>}
-                    <span>{photo.location ?? ''}</span>
-                  </div>
-                  <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-light text-foreground group-hover:text-accent-gold transition-colors leading-tight">
+            <motion.article key={photo.id} variants={item} className="flex flex-col">
+              <Link href={`/photo/${photo.id}`} className="group block no-underline flex-1 flex flex-col">
+                <ArchivalImageFrame
+                  src={photo.imageUrl ?? ''}
+                  alt={photo.title ?? 'Photo'}
+                  caption={{
+                    date: photo.year ?? undefined,
+                    location: photo.location ?? undefined,
+                  }}
+                  variant="gallery"
+                  indexBadge={String(index + 1).padStart(2, '0')}
+                  interactive
+                  loading="lazy"
+                />
+                <div className="mt-4 sm:mt-5 px-0.5 space-y-1.5 sm:space-y-2">
+                  <h3 className="font-serif text-lg sm:text-xl lg:text-2xl font-light text-foreground group-hover:text-accent-gold transition-colors duration-300 leading-tight">
                     {photo.title ?? '(No title)'}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed line-clamp-2">
-                    {photo.description ?? ''}
-                  </p>
+                  {photo.description && (
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2 font-light">
+                      {photo.description}
+                    </p>
+                  )}
                 </div>
-              </article>
-            </Link>
+              </Link>
+            </motion.article>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

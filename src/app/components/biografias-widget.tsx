@@ -1,8 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'motion/react';
 import { useLocale } from '@/app/providers';
 import { ChevronRight } from 'lucide-react';
+
+const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.05 } } };
+const item = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } };
 
 const CATEGORIES = [
   { key: 'cultura' as const, personIds: ['tradiciones'] },
@@ -32,12 +36,18 @@ export function BiografiasWidget() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {CATEGORIES.map(({ key, personIds }) => (
+          <motion.div key={key} variants={item}>
           <Link
-            key={key}
             href={`/biografias/${key}`}
-            className="group block rounded-lg border border-border bg-muted/30 hover:bg-muted/50 hover:border-accent-gold/30 p-4 transition-all duration-200 no-underline"
+            className="group block rounded-lg border border-border bg-muted/30 hover:bg-muted/50 hover:border-accent-gold/30 hover:shadow-md p-4 transition-all duration-300 no-underline"
           >
             <p className="text-xs uppercase tracking-[0.15em] text-accent-gold font-medium mb-2">
               {t(`biografias.categories.${key}`)}
@@ -51,8 +61,9 @@ export function BiografiasWidget() {
               </p>
             )}
           </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </aside>
   );
 }

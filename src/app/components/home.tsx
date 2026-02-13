@@ -1,8 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { motion } from 'motion/react';
 import { useLocale } from '@/app/providers';
 import { BiografiasWidget } from '@/app/components/biografias-widget';
+import { AnimateInView } from '@/app/components/AnimateInView';
+
+const heroVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
 
 export function Home() {
   const { t } = useLocale();
@@ -12,38 +21,64 @@ export function Home() {
       {/* Hero with gradient */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
-        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-10 sm:py-20 lg:py-28 relative max-w-[100vw]">
-          <p className="text-xs sm:text-[13px] md:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6">
+        <motion.div
+          className="container mx-auto px-3 sm:px-6 lg:px-10 py-10 sm:py-20 lg:py-28 relative max-w-[100vw]"
+          initial="hidden"
+          animate="visible"
+          variants={heroVariants}
+        >
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            className="text-xs sm:text-[13px] md:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6"
+          >
             {t('home.period')}
-          </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground mb-6 sm:mb-10 leading-[1.1] break-words">
+          </motion.p>
+          <motion.h2
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground mb-6 sm:mb-10 leading-[1.1] break-words"
+          >
             {t('home.title')}
-          </h2>
-          <div className="w-16 sm:w-24 h-0.5 bg-accent-gold/60 rounded-full mb-6 sm:mb-10" />
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light mb-8 sm:mb-14 max-w-2xl w-full">
+          </motion.h2>
+          <motion.div
+            variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1 } }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+            className="w-16 sm:w-24 h-0.5 bg-accent-gold/60 rounded-full mb-6 sm:mb-10 origin-left"
+          />
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light mb-8 sm:mb-14 max-w-2xl w-full"
+          >
             {t('home.intro')}
-          </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+          </motion.p>
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
+          >
             <Link
               href="/gallery"
-              className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] bg-accent-gold text-primary-foreground text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.15em] rounded-lg hover:bg-accent-gold-muted transition-colors shadow-lg shadow-accent-gold/20"
+              className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] bg-accent-gold text-primary-foreground text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.15em] rounded-lg hover:bg-accent-gold-muted transition-all duration-300 shadow-lg shadow-accent-gold/20 hover:shadow-xl hover:shadow-accent-gold/25 hover:scale-[1.02] active:scale-[0.98]"
             >
               {t('home.cta')}
-              <span className="text-lg sm:text-xl" aria-hidden>→</span>
+              <span className="text-lg sm:text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
             </Link>
             <Link
               href="/biografias"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] border border-border text-foreground text-[13px] sm:text-[15px] uppercase tracking-[0.15em] rounded-lg hover:bg-accent hover:border-accent-gold/40 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] border border-border text-foreground text-[13px] sm:text-[15px] uppercase tracking-[0.15em] rounded-lg hover:bg-accent hover:border-accent-gold/40 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               {t('nav.biografias')}
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
+      <AnimateInView>
       <section className="border-b border-border">
         <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
-          <div className="rounded-xl sm:rounded-2xl bg-card border border-border p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
+          <div className="rounded-xl sm:rounded-2xl bg-card border border-border p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0 hover:shadow-md transition-shadow duration-300">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -63,16 +98,20 @@ export function Home() {
           </div>
         </div>
       </section>
+      </AnimateInView>
 
+      <AnimateInView delay={0.1}>
       <section className="border-b border-border">
         <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16 max-w-[100vw]">
           <BiografiasWidget />
         </div>
       </section>
+      </AnimateInView>
 
+      <AnimateInView delay={0.15}>
       <section className="border-b border-border">
         <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
-          <div className="rounded-xl sm:rounded-2xl bg-muted/40 border border-border p-5 sm:p-10 lg:p-12 w-full min-w-0">
+          <div className="rounded-xl sm:rounded-2xl bg-muted/40 border border-border p-5 sm:p-10 lg:p-12 w-full min-w-0 hover:shadow-md transition-shadow duration-300">
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -89,6 +128,7 @@ export function Home() {
           </div>
         </div>
       </section>
+      </AnimateInView>
     </div>
   );
 }

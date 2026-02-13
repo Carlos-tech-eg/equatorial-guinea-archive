@@ -1,13 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-// import { photos } from '@/data/photos';
+import { motion } from 'motion/react';
 import { usePhotos } from '@/hooks/useContent';
 import { ArrowLeft } from 'lucide-react';
 import { useLocale } from '@/app/providers';
-import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { ArchivalImageFrame } from '@/app/components/ArchivalImageFrame';
 
 type PhotoDetailProps = { id: string };
+
+const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.1 } } };
+const item = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } };
 
 export function PhotoDetail({ id }: PhotoDetailProps) {
   const { t } = useLocale();
@@ -46,40 +49,50 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
   const source = photo.source ?? '';
 
   return (
-    <div className="min-h-screen w-full min-w-0">
-      <header className="border-b border-border">
+    <div className="min-h-screen w-full min-w-0" style={{ background: 'var(--archival-bg-subtle)' }}>
+      <motion.header
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="border-b border-border"
+      >
         <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-4 sm:py-6 max-w-[100vw]">
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-colors"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" aria-hidden />
             {t('photo.backToGallery')}
           </Link>
         </div>
-      </header>
+      </motion.header>
 
-      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-12 lg:py-16 max-w-[100vw]">
+      <motion.div
+        className="container mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-12 lg:py-16 max-w-[100vw]"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 xl:gap-20">
-          <div className="lg:col-span-7 min-w-0">
-            <div className="lg:sticky lg:top-24">
-              <p className="mb-3 sm:mb-6 text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.2em]">
+          <motion.div variants={item} className="lg:col-span-7 min-w-0">
+            <div className="lg:sticky lg:top-24 space-y-4 sm:space-y-5">
+              <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-[0.2em]">
                 {String(photoIndex + 1).padStart(2, '0')} {t('photo.of')}{' '}
                 {String(photos.length).padStart(2, '0')}
               </p>
-              <div className="bg-card border border-border p-3 sm:p-6 lg:p-8 xl:p-10 rounded-xl overflow-hidden">
-                <div className="bg-muted/50 min-w-0">
-                  <ImageWithFallback
-                    src={photo.imageUrl ?? ''}
-                    alt={title || 'Photo'}
-                    className="w-full h-auto max-w-full"
-                  />
-                </div>
-              </div>
+              <ArchivalImageFrame
+                src={photo.imageUrl ?? ''}
+                alt={title || 'Photo'}
+                caption={{ date: photo.year ?? undefined, location: location || undefined }}
+                variant="detail"
+                interactive={false}
+                loading="eager"
+                className="max-w-2xl"
+              />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-5 space-y-6 sm:space-y-10 min-w-0">
+          <motion.div variants={item} className="lg:col-span-5 space-y-6 sm:space-y-10 min-w-0">
             <div>
               <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-foreground mb-4 sm:mb-6 leading-tight break-words">
                 {title}
@@ -164,9 +177,9 @@ export function PhotoDetail({ id }: PhotoDetailProps) {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

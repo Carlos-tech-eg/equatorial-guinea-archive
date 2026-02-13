@@ -1,13 +1,20 @@
 'use client';
 
+import { motion } from 'motion/react';
 import { useLocale } from '@/app/providers';
+import { AnimateInView } from '@/app/components/AnimateInView';
 
 export function About() {
   const { t, aboutArchives } = useLocale();
 
   return (
     <div className="min-h-screen">
-      <header className="relative overflow-hidden border-b border-border">
+      <motion.header
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative overflow-hidden border-b border-border"
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-14 lg:py-20 relative max-w-[100vw]">
           <p className="text-[13px] sm:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6">
@@ -17,11 +24,12 @@ export function About() {
             {t('about.title')}
           </h2>
         </div>
-      </header>
+      </motion.header>
 
       <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
         <div className="max-w-4xl lg:max-w-5xl space-y-8 sm:space-y-12 lg:space-y-16 w-full min-w-0">
-          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
+          <AnimateInView>
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0 hover:shadow-md transition-shadow duration-300">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -39,8 +47,10 @@ export function About() {
             </div>
           </div>
           </section>
+          </AnimateInView>
 
-          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
+          <AnimateInView delay={0.08}>
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0 hover:shadow-md transition-shadow duration-300">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -83,8 +93,10 @@ export function About() {
             </div>
           </div>
           </section>
+          </AnimateInView>
 
-          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
+          <AnimateInView delay={0.12}>
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0 hover:shadow-md transition-shadow duration-300">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -120,8 +132,10 @@ export function About() {
             </div>
           </div>
           </section>
+          </AnimateInView>
 
-          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0">
+          <AnimateInView delay={0.16}>
+          <section className="rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0 hover:shadow-md transition-shadow duration-300">
             <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-16">
               <div className="lg:col-span-4">
                 <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
@@ -139,7 +153,7 @@ export function About() {
                 </p>
                 <a
                   href={`mailto:${t('about.emailValue')}`}
-                  className="text-lg sm:text-xl font-light text-foreground hover:text-muted-foreground transition-colors"
+                  className="text-lg sm:text-xl font-light text-foreground hover:text-muted-foreground transition-colors duration-300"
                 >
                   {t('about.emailValue')}
                 </a>
@@ -147,6 +161,7 @@ export function About() {
             </div>
           </div>
           </section>
+          </AnimateInView>
         </div>
       </div>
     </div>

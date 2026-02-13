@@ -23,7 +23,7 @@ export function Navigation() {
 
 
   const navLinkClass = (path: string) =>
-    `no-underline text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-all px-3 py-2 rounded-lg ${isActive(path)
+    `no-underline text-[13px] sm:text-[15px] uppercase tracking-[0.15em] transition-all duration-300 px-3 py-2 rounded-lg ${isActive(path)
       ? 'text-accent-gold bg-accent'
       : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
     }`;
@@ -33,7 +33,7 @@ export function Navigation() {
       <div className="container mx-auto px-3 sm:px-6 lg:px-10 max-w-[100vw]">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 py-3 sm:py-5 lg:py-6">
           <Link href="/" className="no-underline flex-shrink-0 group min-w-0">
-            <h1 className="font-serif text-xl sm:text-2xl md:text-3xl font-light tracking-tight text-foreground group-hover:text-accent-gold transition-colors break-words">
+            <h1 className="font-serif text-xl sm:text-2xl md:text-3xl font-light tracking-tight text-foreground group-hover:text-accent-gold transition-colors duration-300 break-words">
               {t('nav.brand')}
               <span className="block mt-0.5 text-lg sm:text-xl md:text-2xl italic text-muted-foreground group-hover:text-foreground transition-colors">
                 {t('nav.brandSub')}
@@ -70,7 +70,7 @@ export function Navigation() {
               <button
                 type="button"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                className="p-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors duration-300"
                 aria-label="Toggle theme"
               >
                 {!mounted ? (

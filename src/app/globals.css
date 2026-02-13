@@ -27,6 +27,12 @@
   --accent-gold-muted: #b8953e;
   --font-serif: 'Cormorant Garamond', 'Georgia', serif;
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Archival / museum frame styling */
+  --archival-mat: #1a1a1c;
+  --archival-frame-border: rgba(212, 168, 83, 0.15);
+  --archival-frame-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 1px rgba(212, 168, 83, 0.2);
+  --archival-frame-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 1px rgba(212, 168, 83, 0.3);
+  --archival-bg-subtle: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 168, 83, 0.03) 0%, transparent 50%);
 }
 
 /* Light mode */
@@ -45,6 +51,19 @@
   --ring: #a1a1aa;
   --accent-gold: #b45309;
   --accent-gold-muted: #92400e;
+  /* Archival / museum frame styling (light) */
+  --archival-mat: #f5f3ef;
+  --archival-frame-border: rgba(180, 83, 9, 0.12);
+  --archival-frame-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.06);
+  --archival-frame-shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.08);
+  --archival-bg-subtle: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180, 83, 9, 0.04) 0%, transparent 50%);
+}
+
+/* Gallery / archival page layout constraint */
+.gallery-container {
+  max-width: min(72rem, 100%);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @theme inline {
@@ -79,6 +98,7 @@
     font-size: var(--font-size);
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -116,4 +136,44 @@
 
   .font-serif { font-family: var(--font-serif); }
   .font-sans { font-family: var(--font-sans); }
+}
+
+/* Animaciones moderadas */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
 }
