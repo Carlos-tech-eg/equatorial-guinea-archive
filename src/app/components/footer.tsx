@@ -1,7 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { useLocale } from '@/app/providers';
+import { ArrowUpRight, Landmark } from 'lucide-react';
 
 export function Footer() {
   const { t } = useLocale();
@@ -11,24 +13,40 @@ export function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
-      className="border-t border-border bg-card mt-16 sm:mt-24 md:mt-32"
+      className="border-t border-[var(--museum-line)] bg-[var(--museum-panel)]"
     >
-      <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-12 md:py-16 max-w-[100vw]">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 text-center sm:text-left">
+      <div className="container mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="min-w-0">
-            <p className="font-serif text-lg sm:text-xl md:text-2xl font-light text-foreground mb-2 break-words">
-              Guinea Equatorial <span className="italic text-accent-gold">Archivos</span>
+            <p className="mb-4 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--museum-amber)]">
+              <Landmark className="h-4 w-4" />
+              Archivo digital
             </p>
-            <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="font-serif text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
+              Guinea Equatorial <span className="italic text-[var(--museum-amber)]">Archivos</span>
+            </p>
+            <p className="mt-3 max-w-xl text-sm uppercase tracking-[0.18em] text-muted-foreground">
               {t('footer.tagline')}
             </p>
           </div>
-          <div className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-6 text-sm text-muted-foreground">
-            <a href="/" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors duration-300">{t('nav.home')}</a>
-            <a href="/gallery" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors duration-300">{t('nav.gallery')}</a>
-            <a href="/biografias" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors duration-300">{t('nav.biografias')}</a>
-            <a href="/about" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-foreground transition-colors duration-300">{t('nav.about')}</a>
-            <a href="/admin" className="py-2 px-1 min-h-[44px] inline-flex items-center hover:text-accent-gold transition-colors duration-300">Admin</a>
+          <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground sm:grid-cols-3">
+            {[
+              ['/', t('nav.home')],
+              ['/gallery', t('nav.gallery')],
+              ['/biografias', t('nav.biografias')],
+              ['/about', t('nav.about')],
+              ['/guinea-hoy', 'Guinea Hoy'],
+              ['/admin', 'Admin'],
+            ].map(([href, label]) => (
+              <Link
+                key={href}
+                href={href}
+                className="inline-flex min-h-[44px] items-center justify-between border border-[var(--museum-line)] px-3 py-2 transition hover:border-[var(--museum-amber)] hover:text-foreground"
+              >
+                {label}
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            ))}
           </div>
         </div>
       </div>

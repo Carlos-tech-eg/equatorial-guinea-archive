@@ -133,6 +133,26 @@ firebase login
 firebase deploy --only firestore:rules,storage
 ```
 
+### Solución de problemas: no se ven las fotos
+
+1. **En la web no aparecen fotos**
+   - La galería lee la colección **Firestore** `photos`. Si la colección está vacía, no hay nada que mostrar.
+   - Desde **Admin → Photos** hay que **añadir una foto** y, tras elegir imagen (URL o subir archivo), hacer clic en **Guardar**. Si solo subes el archivo y no guardas, la imagen puede quedar en Storage pero no se crea el documento en Firestore y la web no la muestra.
+
+2. **En Firebase Console “no veo las fotos”**
+   - **Firestore**: Abre **Firestore Database** y revisa que exista la colección `photos` y que tenga documentos (cada uno con `imageUrl`, `title`, etc.).
+   - **Storage**: Abre **Storage** y revisa la carpeta `photos/`. Las imágenes subidas desde el admin se guardan ahí. Si no hay archivos, puede que:
+     - **Storage no esté activado**: En la consola, **Build → Storage → Get started**.
+     - **No has subido nada**: Sube una imagen desde Admin → Photos (elegir “Upload” y luego **Save**).
+     - **Reglas de Storage**: Despliega las reglas con `firebase deploy --only storage`. Las reglas deben permitir lectura pública de `photos/` y escritura solo si estás autenticado.
+
+3. **Subir imagen falla (permiso denegado, 403)**
+   - Tienes que estar **logueado** en el panel Admin. Storage solo permite subir si `request.auth != null`.
+   - Asegúrate de que las reglas de Storage están desplegadas en el mismo proyecto que usa la app (revisa `.env.local` y que `NEXT_PUBLIC_FIREBASE_*` coincida con tu proyecto).
+
+4. **Proyecto equivocado**
+   - Si usas otro proyecto de Firebase, crea `.env.local` con las variables de ese proyecto (copia desde `.env.local.example`). Sin `.env.local`, la app usa los valores por defecto del código (proyecto `admin-panel-archivoseg`).
+
 ---
 
 ## Panel de administración

@@ -31,7 +31,7 @@ export function ArchivalImageFrame({
   className = '',
   imageClassName = '',
   interactive = true,
-  loading = 'lazy',
+  loading = 'eager',
 }: ArchivalImageFrameProps) {
   const isDetail = variant === 'detail';
 

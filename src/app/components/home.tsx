@@ -1,134 +1,140 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { ArrowRight, CalendarDays, Landmark, MapPin } from 'lucide-react';
+import { usePhotos } from '@/hooks/useContent';
 import { useLocale } from '@/app/providers';
-import { BiografiasWidget } from '@/app/components/biografias-widget';
 import { AnimateInView } from '@/app/components/AnimateInView';
+import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { HERO_FALLBACK_IMAGES } from '@/data/heroFallbackImages';
+import { ColeccionesMemoriaSection } from '@/app/components/ColeccionesMemoriaSection';
 
-const heroVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-  },
+const HERO_SECTION_IMAGE = '/images/independencia-de-guinea.jpeg';
+
+type HeroPhoto = {
+  id: string;
+  title?: string | null;
+  imageUrl: string | null;
+  year: string | null;
+  location: string | null;
+  description?: string | null;
 };
+
+function getFallback(index: number) {
+  return HERO_FALLBACK_IMAGES[index % HERO_FALLBACK_IMAGES.length];
+}
+
+function photoSrc(photo: HeroPhoto | null, index: number) {
+  return photo?.imageUrl?.trim() || getFallback(index).src;
+}
 
 export function Home() {
   const { t } = useLocale();
+  const { photos } = usePhotos();
+  const heroPhotos = (photos.length ? photos : []).slice(0, 5) as HeroPhoto[];
 
   return (
-    <div className="min-h-[50vh] w-full min-w-0">
-      {/* Hero with gradient */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-gold/5 via-transparent to-transparent pointer-events-none" />
-        <motion.div
-          className="container mx-auto px-3 sm:px-6 lg:px-10 py-10 sm:py-20 lg:py-28 relative max-w-[100vw]"
-          initial="hidden"
-          animate="visible"
-          variants={heroVariants}
-        >
-          <motion.p
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-            className="text-xs sm:text-[13px] md:text-[15px] uppercase tracking-[0.2em] text-accent-gold mb-4 sm:mb-6"
-          >
-            {t('home.period')}
-          </motion.p>
-          <motion.h2
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-foreground mb-6 sm:mb-10 leading-[1.1] break-words"
-          >
-            {t('home.title')}
-          </motion.h2>
-          <motion.div
-            variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1 } }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
-            className="w-16 sm:w-24 h-0.5 bg-accent-gold/60 rounded-full mb-6 sm:mb-10 origin-left"
+    <div className="min-h-screen bg-background">
+      <section className="relative min-h-[min(100dvh,820px)] overflow-hidden border-b border-border sm:min-h-[calc(100vh-118px)]">
+        <div className="absolute inset-0">
+          <ImageWithFallback
+            src={HERO_SECTION_IMAGE}
+            fallbackSrc={photoSrc(heroPhotos[0] ?? null, 0)}
+            alt="Ceremonia de independencia de Guinea Ecuatorial"
+            className="h-full w-full object-cover grayscale-[0.22] sepia-[0.28]"
           />
-          <motion.p
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light mb-8 sm:mb-14 max-w-2xl w-full"
-          >
-            {t('home.intro')}
-          </motion.p>
-          <motion.div
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
-          >
-            <Link
-              href="/gallery"
-              className="inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] bg-accent-gold text-primary-foreground text-[13px] sm:text-[15px] font-medium uppercase tracking-[0.15em] rounded-lg hover:bg-accent-gold-muted transition-all duration-300 shadow-lg shadow-accent-gold/20 hover:shadow-xl hover:shadow-accent-gold/25 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              {t('home.cta')}
-              <span className="text-lg sm:text-xl transition-transform duration-300 group-hover:translate-x-1" aria-hidden>→</span>
-            </Link>
-            <Link
-              href="/biografias"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[48px] border border-border text-foreground text-[13px] sm:text-[15px] uppercase tracking-[0.15em] rounded-lg hover:bg-accent hover:border-accent-gold/40 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              {t('nav.biografias')}
-            </Link>
-          </motion.div>
-        </motion.div>
-      </section>
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,7,0.55)_0%,rgba(8,8,7,0.88)_45%,rgba(8,8,7,0.92)_100%)] lg:bg-[linear-gradient(90deg,rgba(8,8,7,0.92)_0%,rgba(8,8,7,0.68)_48%,rgba(8,8,7,0.18)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(214,164,83,0.18),transparent_32%)]" />
+        </div>
 
-      <AnimateInView>
-      <section className="border-b border-border">
-        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
-          <div className="rounded-xl sm:rounded-2xl bg-card border border-border p-5 sm:p-10 lg:p-12 shadow-sm w-full min-w-0 hover:shadow-md transition-shadow duration-300">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
-              <div className="lg:col-span-4">
-                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
-                  {t('home.purposeTitle')}
-                </h3>
-                <div className="w-12 sm:w-16 h-0.5 bg-accent-gold/60 rounded-full" />
+        <div className="container relative mx-auto flex min-h-[min(100dvh,820px)] max-w-7xl flex-col justify-end px-4 py-10 sm:min-h-[calc(100vh-118px)] sm:justify-center sm:px-6 sm:py-16 lg:px-10">
+          <AnimateInView>
+            <div className="max-w-3xl">
+              <p className="mb-4 inline-flex items-center gap-2 border-y border-[var(--museum-amber)]/50 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--museum-amber)] sm:mb-5 sm:gap-3 sm:text-[11px] sm:tracking-[0.24em]">
+                <Landmark className="h-4 w-4 shrink-0" />
+                {t('home.period')}
+              </p>
+              <h1 className="font-serif text-3xl font-semibold leading-[1.02] text-white sm:text-5xl sm:leading-[0.98] lg:text-7xl">
+                {t('home.title')}
+              </h1>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/76 sm:mt-6 sm:text-base sm:leading-8 lg:text-lg">
+                {t('home.intro')}
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/gallery"
+                  className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 bg-[var(--museum-amber)] px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-black transition hover:bg-[var(--museum-amber-soft)] sm:w-auto"
+                >
+                  {t('nav.gallery')}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/biografias"
+                  className="inline-flex min-h-[44px] w-full items-center justify-center border border-white/35 px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-white transition hover:border-[var(--museum-amber)] hover:text-[var(--museum-amber)] sm:w-auto"
+                >
+                  {t('nav.biografias')}
+                </Link>
               </div>
-              <div className="lg:col-span-8 space-y-6">
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {t('home.purpose1')}
+
+              <div className="mt-8 grid grid-cols-2 gap-3 border border-white/15 bg-black/40 p-4 backdrop-blur sm:gap-4 sm:p-5 md:hidden">
+                <div>
+                  <p className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--museum-amber)] sm:text-[10px]">
+                    <CalendarDays className="h-3.5 w-3.5 shrink-0" />
+                    Periodo
+                  </p>
+                  <p className="mt-1.5 font-serif text-lg text-white sm:text-xl">1778-1968</p>
+                </div>
+                <div>
+                  <p className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-[var(--museum-amber)] sm:text-[10px]">
+                    <MapPin className="h-3.5 w-3.5 shrink-0" />
+                    Archivo
+                  </p>
+                  <p className="mt-1.5 font-serif text-lg text-white sm:text-xl">Bioko / Rio Muni</p>
+                </div>
+              </div>
+            </div>
+          </AnimateInView>
+
+          <div className="absolute bottom-0 right-0 hidden w-[min(38vw,520px)] border-l border-t border-white/20 bg-black/45 p-5 backdrop-blur md:block">
+            <div className="grid grid-cols-2 gap-4 text-white/80">
+              <div>
+                <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--museum-amber)]">
+                  <CalendarDays className="h-4 w-4" />
+                  Periodo
                 </p>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {t('home.purpose2')}
+                <p className="mt-2 font-serif text-2xl text-white">1778-1968</p>
+              </div>
+              <div>
+                <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--museum-amber)]">
+                  <MapPin className="h-4 w-4" />
+                  Archivo
                 </p>
+                <p className="mt-2 font-serif text-2xl text-white">Bioko / Rio Muni</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      </AnimateInView>
 
-      <AnimateInView delay={0.1}>
-      <section className="border-b border-border">
-        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16 max-w-[100vw]">
-          <BiografiasWidget />
+      <ColeccionesMemoriaSection variant="home" />
+
+      <section className="museum-band bg-background">
+        <div className="container mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-10 lg:py-16">
+          <AnimateInView>
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--museum-amber)]">
+              Ensayo historico
+            </p>
+            <h2 className="font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
+              {t('home.contextTitle')}
+            </h2>
+          </AnimateInView>
+          <AnimateInView delay={0.08}>
+            <p className="max-w-4xl text-lg leading-9 text-muted-foreground">
+              {t('home.context')}
+            </p>
+          </AnimateInView>
         </div>
       </section>
-      </AnimateInView>
-
-      <AnimateInView delay={0.15}>
-      <section className="border-b border-border">
-        <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-16 lg:py-24 max-w-[100vw]">
-          <div className="rounded-xl sm:rounded-2xl bg-muted/40 border border-border p-5 sm:p-10 lg:p-12 w-full min-w-0 hover:shadow-md transition-shadow duration-300">
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
-              <div className="lg:col-span-4">
-                <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-light text-foreground mb-4">
-                  {t('home.contextTitle')}
-                </h3>
-                <div className="w-12 sm:w-16 h-0.5 bg-accent-gold/60 rounded-full" />
-              </div>
-              <div className="lg:col-span-8">
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {t('home.context')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      </AnimateInView>
     </div>
   );
 }

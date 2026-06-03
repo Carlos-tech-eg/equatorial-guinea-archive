@@ -1,9 +1,9 @@
 'use client';
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { Locale } from '@/i18n';
-import { getStoredLocale, setStoredLocale } from '@/i18n';
+import { defaultLocale, getStoredLocale, setStoredLocale } from '@/i18n';
 import {
   getAboutArchives,
   getPhotoTranslation,
@@ -28,7 +28,11 @@ export function useLocale() {
 }
 
 function LocaleProviderInner({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(getStoredLocale);
+  // Use default on first render to avoid hydration mismatch (server has no localStorage)
+  const [locale, setLocaleState] = useState<Locale>(() => defaultLocale);
+  useEffect(() => {
+    setLocaleState(getStoredLocale());
+  }, []);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);

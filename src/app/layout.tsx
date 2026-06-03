@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
-import { Navigation } from '@/app/components/navigation';
+import { TickerMasthead } from '@/app/components/TickerMasthead';
 import { Footer } from '@/app/components/footer';
 import { Providers } from '@/app/providers';
+import { ErrorBoundary } from '@/app/components/ErrorBoundary';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -25,8 +26,10 @@ export default function RootLayout({
     <html lang="es" className="dark" suppressHydrationWarning>
       <body className="min-h-screen min-w-0 bg-background text-foreground font-sans overflow-x-hidden">
         <Providers>
-          <Navigation />
-          <main>{children}</main>
+          <TickerMasthead />
+          <main>
+            <ErrorBoundary>{children}</ErrorBoundary>
+          </main>
           <Footer />
         </Providers>
       </body>

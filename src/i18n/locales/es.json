@@ -2,8 +2,10 @@
   "nav": {
     "home": "Inicio",
     "gallery": "Galería",
-    "biografias": "Biografías",
+    "biografias": "Colecciones",
     "about": "Acerca de",
+    "guineaHoy": "Guinea Hoy",
+    "search": "Buscar",
     "brand": "Guinea Ecuatorial",
     "brandSub": "Archivos"
   },
@@ -16,12 +18,19 @@
     "purpose1": "Estas imágenes constituyen un testimonio histórico fundamental del paisaje arquitectónico, social y cultural de la época. Las fotografías proceden de fondos nacionales, colecciones privadas e instituciones históricas.",
     "purpose2": "Cada imagen va acompañada de información sobre su fecha, lugar y relevancia histórica. Este archivo está destinado a la enseñanza y la investigación.",
     "contextTitle": "Contexto histórico",
-    "context": "Guinea Ecuatorial, formada por la región continental (Río Muni) y varias islas (entre ellas Bioko, antes Fernando Pó), estuvo bajo dominio colonial español durante casi dos siglos. Las imágenes datan de finales del siglo xix hasta mediados del xx y documentan el desarrollo urbano, las infraestructuras y la organización social."
+    "context": "Guinea Ecuatorial, formada por la región continental (Río Muni) y varias islas (entre ellas Bioko, antes Fernando Pó), estuvo bajo dominio colonial español durante casi dos siglos. Las imágenes datan de finales del siglo xix hasta mediados del xx y documentan el desarrollo urbano, las infraestructuras y la organización social.",
+    "viewGallery": "Ver toda la galería"
   },
   "gallery": {
     "label": "Colección",
     "title": "Archivo fotográfico",
-    "subtitle": "Una selección de fotografías históricas que documentan la arquitectura, la vida urbana y las estructuras sociales durante el período colonial."
+    "subtitle": "Una selección de fotografías históricas que documentan la arquitectura, la vida urbana y las estructuras sociales durante el período colonial.",
+    "curatorLabel": "Curaduría",
+    "textBy": "Texto",
+    "duration": "Duración",
+    "untitled": "Sin título",
+    "defaultSource": "Archivo histórico",
+    "empty": "Aún no hay fotografías en esta colección."
   },
   "photo": {
     "of": "de",
@@ -61,23 +70,46 @@
     "emailValue": "archivos@eq-guinea-history.org"
   },
   "footer": {
-    "tagline": "Un repositorio digital para la investigación histórica"
+    "tagline": "Preservando la memoria histórica de Guinea Ecuatorial."
   },
   "biografias": {
-    "label": "Biografías",
-    "title": "Personajes de la historia",
-    "subtitle": "Breves biografías organizadas por ámbito: cultura, música, personas históricas y política.",
+    "label": "COLECCIONES",
+    "title": "MEMORIA NACIONAL",
+    "subtitle": "Biografías y archivos organizados en cuatro salas: cultura y tradiciones, música y arte, personajes históricos, y política e instituciones.",
     "readMore": "Leer más",
     "viewAll": "Ver todos",
-    "backToBiografias": "Biografías",
+    "backToBiografias": "Colecciones",
     "backToCategory": "Volver a la categoría",
     "obrasTitle": "Obras",
     "obrasSubtitle": "Selección de obras y trabajos",
     "categories": {
-      "cultura": "Cultura",
-      "musica": "Música",
-      "personasHistoricas": "Personas históricas",
-      "politica": "Política"
+      "cultura": "Cultura y Tradiciones",
+      "musica": "Música y Arte",
+      "personasHistoricas": "Personajes Históricos",
+      "politica": "Política e Instituciones"
+    },
+    "exploreCollection": "Explorar colección",
+    "collectionSlides": {
+      "cultura": {
+        "meta": "COLECCIÓN {{n}}",
+        "tema": "CULTURA, PATRIMONIO",
+        "extracto": "Rituales, tradiciones orales, artesanía y prácticas comunitarias que transmiten la memoria colectiva de los pueblos de Guinea Ecuatorial."
+      },
+      "musica": {
+        "meta": "COLECCIÓN {{n}}",
+        "tema": "MÚSICA, ARTE",
+        "extracto": "Compositores, intérpretes y expresiones artísticas que documentan la creatividad sonora y visual del país a lo largo del siglo XX."
+      },
+      "personasHistoricas": {
+        "meta": "COLECCIÓN {{n}}",
+        "tema": "BIOGRAFÍAS, MEMORIA",
+        "extracto": "Retratos y relatos de figuras que marcaron la política, la cultura y la vida pública en Bioko, Río Muni y el archipiélago."
+      },
+      "politica": {
+        "meta": "COLECCIÓN {{n}}",
+        "tema": "POLÍTICA, INSTITUCIONES",
+        "extracto": "Independencia, administración colonial y construcción del Estado: documentos visuales de un país en transformación."
+      }
     },
     "persons": {
       "macias": {

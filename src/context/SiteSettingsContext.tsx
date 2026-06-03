@@ -37,7 +37,6 @@ export function SiteSettingsProvider({ children }: { children: React.ReactNode }
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Listen to Firestore
         const unsubscribe = onSnapshot(
             doc(db, "settings", "global"),
             (docSnap) => {

@@ -2,8 +2,10 @@
   "nav": {
     "home": "Accueil",
     "gallery": "Galerie",
-    "biografias": "Biographies",
+    "biografias": "Collections",
     "about": "À propos",
+    "guineaHoy": "Guinée aujourd'hui",
+    "search": "Rechercher",
     "brand": "Guinée équatoriale",
     "brandSub": "Archives"
   },
@@ -16,12 +18,19 @@
     "purpose1": "Ces images constituent un témoignage historique important sur le paysage architectural, social et culturel de l'époque. Les photographies proviennent de fonds nationaux, de collections privées et d'institutions historiques.",
     "purpose2": "Chaque image est accompagnée d'informations sur sa date, son lieu et sa portée historique. Cette archive est destinée à l'enseignement et à la recherche.",
     "contextTitle": "Contexte historique",
-    "context": "La Guinée équatoriale, composée du continent (Río Muni) et de plusieurs îles (dont Bioko, anciennement Fernando Pó), fut sous domination coloniale espagnole pendant près de deux siècles. Les images datent de la fin du xixe au milieu du xxe siècle et documentent le développement urbain, les infrastructures et l'organisation sociale."
+    "context": "La Guinée équatoriale, composée du continent (Río Muni) et de plusieurs îles (dont Bioko, anciennement Fernando Pó), fut sous domination coloniale espagnole pendant près de deux siècles. Les images datent de la fin du xixe au milieu du xxe siècle et documentent le développement urbain, les infrastructures et l'organisation sociale.",
+    "viewGallery": "Voir toute la galerie"
   },
   "gallery": {
     "label": "Collection",
     "title": "Archive photographique",
-    "subtitle": "Une sélection de photographies historiques documentant l'architecture, la vie urbaine et les structures sociales pendant la période coloniale."
+    "subtitle": "Une sélection de photographies historiques documentant l'architecture, la vie urbaine et les structures sociales pendant la période coloniale.",
+    "curatorLabel": "Curature",
+    "textBy": "Texte",
+    "duration": "Durée",
+    "untitled": "Sans titre",
+    "defaultSource": "Archives historiques",
+    "empty": "Il n'y a pas encore de photographies dans cette collection."
   },
   "photo": {
     "of": "sur",
@@ -61,23 +70,46 @@
     "emailValue": "archivos@eq-guinea-history.org"
   },
   "footer": {
-    "tagline": "Un dépôt numérique pour la recherche historique"
+    "tagline": "Préserver la mémoire historique de la Guinée équatoriale."
   },
   "biografias": {
-    "label": "Biographies",
-    "title": "Figures de l'histoire",
-    "subtitle": "Courtes biographies organisées par domaine : culture, musique, personnalités historiques et politique.",
+    "label": "COLLECTIONS",
+    "title": "MÉMOIRE NATIONALE",
+    "subtitle": "Biographies et archives organisées en quatre salles : culture et traditions, musique et art, personnages historiques, et politique et institutions.",
     "readMore": "Lire la suite",
     "viewAll": "Voir tout",
-    "backToBiografias": "Biographies",
+    "backToBiografias": "Collections",
     "backToCategory": "Retour à la catégorie",
     "obrasTitle": "Œuvres",
     "obrasSubtitle": "Sélection d'œuvres et de travaux",
     "categories": {
-      "cultura": "Culture",
-      "musica": "Musique",
-      "personasHistoricas": "Personnalités historiques",
-      "politica": "Politique"
+      "cultura": "Culture et traditions",
+      "musica": "Musique et art",
+      "personasHistoricas": "Personnages historiques",
+      "politica": "Politique et institutions"
+    },
+    "exploreCollection": "Explorer la collection",
+    "collectionSlides": {
+      "cultura": {
+        "meta": "COLLECTION {{n}}",
+        "tema": "CULTURE, PATRIMOINE",
+        "extracto": "Rituels, traditions orales, artisanat et pratiques communautaires qui transmettent la mémoire collective des peuples de Guinée équatoriale."
+      },
+      "musica": {
+        "meta": "COLLECTION {{n}}",
+        "tema": "MUSIQUE, ART",
+        "extracto": "Compositeurs, interprètes et expressions artistiques qui documentent la créativité sonore et visuelle du pays au long du XXe siècle."
+      },
+      "personasHistoricas": {
+        "meta": "COLLECTION {{n}}",
+        "tema": "BIOGRAPHIES, MÉMOIRE",
+        "extracto": "Portraits et récits de figures qui ont marqué la politique, la culture et la vie publique à Bioko, en Río Muni et dans l'archipel."
+      },
+      "politica": {
+        "meta": "COLLECTION {{n}}",
+        "tema": "POLITIQUE, INSTITUTIONS",
+        "extracto": "Indépendance, administration coloniale et construction de l'État : documents visuels d'un pays en transformation."
+      }
     },
     "persons": {
       "macias": {

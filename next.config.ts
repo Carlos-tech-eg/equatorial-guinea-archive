@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   transpilePackages: ['lucide-react'],
+  async redirects() {
+    return [{ source: '/guinea-hoy', destination: '/', permanent: false }];
+  },
   images: {
     remotePatterns: [
       {
@@ -17,6 +20,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'storage.googleapis.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'upload.wikimedia.org',
         pathname: '/**',
       },
     ],

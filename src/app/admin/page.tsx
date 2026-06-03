@@ -100,7 +100,7 @@ export default function AdminDashboardPage() {
                   <Link key={p.id} href={`/photo/${p.id}`} target="_blank" rel="noopener noreferrer" className="block rounded-lg border border-border overflow-hidden bg-card hover:border-accent-gold/40 transition-colors">
                     <div className="aspect-[4/3] bg-muted">
                       <ImageWithFallback
-                        src={p.imageUrl}
+                        src={p.imageUrl ?? undefined}
                         alt={p.title}
                         className="w-full h-full object-cover"
                       />
