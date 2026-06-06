@@ -359,7 +359,7 @@ export default function AdminPhotosPage() {
                     <Label htmlFor="image-url">Image URL</Label>
                     <Input
                       id="image-url"
-                      value={form.imageUrl}
+                      value={form.imageUrl ?? ''}
                       onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))}
                       placeholder="https://..."
                     />
@@ -448,7 +448,7 @@ export default function AdminPhotosPage() {
               <a href={`/photo/${p.id}`} target="_blank" rel="noopener noreferrer" className="block flex-1">
                 <div className="aspect-[4/3] bg-muted">
                   <ImageWithFallback
-                    src={p.imageUrl}
+                    src={p.imageUrl ?? ''}
                     alt={p.title}
                     className="w-full h-full object-cover"
                   />
