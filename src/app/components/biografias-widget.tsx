@@ -11,7 +11,7 @@ const item = { hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } };
 const CATEGORIES = [
   { key: 'cultura' as const, personIds: ['tradiciones'] },
   { key: 'musica' as const, personIds: ['makossa'] },
-  { key: 'personasHistoricas' as const, personIds: ['ntutumu', 'colonial'] },
+  { key: 'personasHistoricas' as const, personIds: ['pedro-ela-nguema', 'ntutumu', 'colonial'] },
   { key: 'politica' as const, personIds: ['macias'] },
   { key: 'deporte' as const, personIds: ['emilio-nsue'] },
 ] as const;

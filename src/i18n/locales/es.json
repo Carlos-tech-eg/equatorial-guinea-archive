@@ -125,7 +125,15 @@
     "emailValue": "archivos@eq-guinea-history.org"
   },
   "footer": {
-    "tagline": "Preservando la memoria histórica de Guinea Ecuatorial."
+    "tagline": "Preservando la memoria histórica de Guinea Ecuatorial.",
+    "brandLabel": "Archivo digital",
+    "sloganBefore": "Guinea Ecuatorial ",
+    "sloganAccent": "Archivos",
+    "sloganAfter": "",
+    "contactBandAria": "Contacto con el archivo",
+    "contactLead": "¿Posee material histórico? Escríbanos →",
+    "contactTitle": "Contacto",
+    "navAria": "Enlaces del sitio"
   },
   "biografias": {
     "label": "COLECCIONES",
@@ -220,7 +228,7 @@
       "featuredSummary": "22 y 29 de septiembre de 1968 · Segunda vuelta presidencial",
       "left1": {
         "title": "Francisco Macías Nguema",
-        "summary": "Retrato del primer presidente de Guinea Ecuatorial tras las elecciones de 1968, en el contexto de la transición a la independencia."
+        "summary": "Primer presidente de Guinea Ecuatorial tras la independencia de España el 12 de octubre de 1968. Antes de la independencia ocupó varios cargos en la administración colonial."
       },
       "left2": {
         "title": "Independencia de Guinea Ecuatorial el 12 de octubre de 1968 en Santa Isabel",
@@ -273,13 +281,19 @@
         "name": "Francisco Macías Nguema",
         "dates": "1924–1979",
         "role": "Primer presidente de Guinea Ecuatorial",
-        "bio": "Francisco Macías Nguema (nacido Mez-m Nguema) fue el primer presidente de Guinea Ecuatorial tras la independencia de España en 1968. Gobernó de forma autoritaria hasta su derrocamiento en 1979. Su mandato quedó marcado por la represión y el aislamiento internacional."
+        "bio": "Francisco Macías Nguema (1924–1979) fue el primer presidente de Guinea Ecuatorial tras la independencia del país de España el 12 de octubre de 1968. Antes de la independencia ocupó varios cargos en la administración colonial y fue elegido presidente en las elecciones de 1968.\n\nDurante sus primeros años en el poder concentró progresivamente la autoridad del Estado, instauró un sistema de partido único y en 1972 fue declarado presidente vitalicio. Su gobierno estuvo marcado por la represión política, las detenciones arbitrarias, las ejecuciones y el exilio de miles de ecuatoguineanos."
       },
       "ntutumu": {
         "name": "Miguel Ntutumu",
         "dates": "Siglo XX",
         "role": "Figura histórica y política",
         "bio": "Miguel Ntutumu fue una figura relevante en el contexto político y social de Guinea Ecuatorial durante la transición colonial y poscolonial. Su trayectoria refleja las tensiones y cambios de esa época."
+      },
+      "pedro-ela-nguema": {
+        "name": "Pedro Ela Nguema Andeme",
+        "dates": "1936–1971",
+        "role": "Jefe de la Casa Civil · Pionero de la independencia",
+        "bio": "Nacido en Nsangayong-Essangui (Mongomo) en 1936, fue asesor de Francisco Macías Nguema durante el proceso independentista y primer Jefe de la Casa Civil tras la independencia de 1968. Figura moderadora en los primeros años de la República, falleció en Madrid en 1971."
       },
       "colonial": {
         "name": "Administración colonial española",

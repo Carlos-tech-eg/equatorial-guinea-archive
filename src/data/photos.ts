@@ -14,7 +14,7 @@ export const photos: Photo[] = [
     title: 'Francisco Macías Nguema',
     year: '1968–1979',
     location: 'Guinea Ecuatorial',
-    description: 'Fue el primer presidente de Guinea Ecuatorial tras la independencia de España en 1968. Gobernó hasta 1979, cuando fue derrocado por un golpe de Estado encabezado por Teodoro Obiang, su sobrino.',
+    description: 'Francisco Macías Nguema (1924–1979) fue el primer presidente de Guinea Ecuatorial tras la independencia del país de España el 12 de octubre de 1968. Antes de la independencia ocupó varios cargos en la administración colonial y fue elegido presidente en las elecciones de 1968. Durante sus primeros años en el poder concentró progresivamente la autoridad del Estado, instauró un sistema de partido único y en 1972 fue declarado presidente vitalicio. Su gobierno estuvo marcado por la represión política, las detenciones arbitrarias, las ejecuciones y el exilio de miles de ecuatoguineanos.',
     source: 'Archivo histórico',
     imageUrl: '/images/francisco-macias-nguema.png'
   },

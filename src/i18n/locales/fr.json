@@ -125,7 +125,15 @@
     "emailValue": "archivos@eq-guinea-history.org"
   },
   "footer": {
-    "tagline": "Préserver la mémoire historique de la Guinée équatoriale."
+    "tagline": "Préserver la mémoire historique de la Guinée équatoriale.",
+    "brandLabel": "Archives numériques",
+    "sloganBefore": "Guinée équatoriale ",
+    "sloganAccent": "Archives",
+    "sloganAfter": "",
+    "contactBandAria": "Contact avec les archives",
+    "contactLead": "Vous possédez du matériel historique ? Écrivez-nous →",
+    "contactTitle": "Contact",
+    "navAria": "Liens du site"
   },
   "biografias": {
     "label": "COLLECTIONS",
@@ -220,7 +228,7 @@
       "featuredSummary": "Foule rassemblée lors d'un acte politique en plein air : assemblée populaire et mobilisation civique à un moment clé de l'histoire du pays.",
       "left1": {
         "title": "Francisco Macías Nguema",
-        "summary": "Portrait du premier président de la Guinée équatoriale après les élections de 1968, dans le contexte de la transition vers l'indépendance."
+        "summary": "Premier président de Guinée équatoriale après l'indépendance de l'Espagne le 12 octobre 1968. Avant l'indépendance, il occupa plusieurs postes dans l'administration coloniale."
       },
       "left2": {
         "title": "Indépendance de la Guinée équatoriale le 12 octobre 1968 à Santa Isabel",
@@ -273,13 +281,19 @@
         "name": "Francisco Macías Nguema",
         "dates": "1924–1979",
         "role": "Premier président de Guinée équatoriale",
-        "bio": "Francisco Macías Nguema (né Mez-m Nguema) fut le premier président de la Guinée équatoriale après l'indépendance de l'Espagne en 1968. Il gouverna de manière autoritaire jusqu'à son renversement en 1979. Son mandat fut marqué par la répression et l'isolement international."
+        "bio": "Francisco Macías Nguema (1924–1979) fut le premier président de la Guinée équatoriale après l'indépendance du pays vis-à-vis de l'Espagne le 12 octobre 1968. Avant l'indépendance, il occupa plusieurs postes dans l'administration coloniale et fut élu président lors des élections de 1968.\n\nAu cours de ses premières années au pouvoir, il concentra progressivement l'autorité de l'État, instaura un système de parti unique et, en 1972, fut déclaré président à vie. Son gouvernement fut marqué par la répression politique, les détentions arbitraires, les exécutions et l'exil de milliers d'Équato-Guinéens."
       },
       "ntutumu": {
         "name": "Miguel Ntutumu",
         "dates": "XXe siècle",
         "role": "Figure historique et politique",
         "bio": "Miguel Ntutumu fut une figure importante dans le contexte politique et social de la Guinée équatoriale pendant la transition coloniale et postcoloniale. Son parcours reflète les tensions et les changements de cette époque."
+      },
+      "pedro-ela-nguema": {
+        "name": "Pedro Ela Nguema Andeme",
+        "dates": "1936–1971",
+        "role": "Chef de la Maison civile · Pionnier de l'indépendance",
+        "bio": "Né à Nsangayong-Essangui (Mongomo) en 1936, il fut conseiller de Francisco Macías Nguema pendant le processus d'indépendance et premier chef de la Maison civile après 1968. Figure modératrice durant les premières années de la République, il décéda à Madrid en 1971."
       },
       "colonial": {
         "name": "Administration coloniale espagnole",

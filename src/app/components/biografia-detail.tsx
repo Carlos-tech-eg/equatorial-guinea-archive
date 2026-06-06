@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { useLocale } from '@/app/providers';
 import { ArrowLeft } from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { EditorialNewsArticle } from '@/app/components/EditorialNewsArticle';
 import { useBiographies } from '@/hooks/useContent';
-// import { getBiografiaItem, getItemsByCategory, type BiografiaCategory } from '@/data/biografias';
+import { parseArticleBody } from '@/lib/parseArticleBody';
+
+const PERSONAS_SAVED_KEY = 'archivo-saved-personas-historicas';
 
 type BiografiaDetailProps = {
   category: string;
@@ -18,6 +21,7 @@ export function BiografiaDetail({ category, id }: BiografiaDetailProps) {
 
   const item = items.find((i) => i.id === id);
   const categoryItems = items.filter((i) => i.category === category);
+  const isPersonasHistoricas = category === 'personasHistoricas';
 
   const index = categoryItems.findIndex((i) => i.id === id);
   const prevItem = index > 0 ? categoryItems[index - 1] : null;
@@ -47,10 +51,50 @@ export function BiografiaDetail({ category, id }: BiografiaDetailProps) {
     );
   }
 
-  const name = item.name || item.id;
-  const role = item.category;
-  const description = item.description ?? '';
-  const dates = item.year;
+  const personKey = `biografias.persons.${item.id}`;
+  const hasPersonI18n = Boolean(t(`${personKey}.name`) && t(`${personKey}.name`) !== `${personKey}.name`);
+  const name = hasPersonI18n ? t(`${personKey}.name`) : (item.name || item.id);
+  const role = hasPersonI18n ? t(`${personKey}.role`) : '';
+  const dates = item.year?.trim() || (hasPersonI18n ? t(`${personKey}.dates`) : '');
+  const i18nBio =
+    hasPersonI18n && t(`${personKey}.bio`) !== `${personKey}.bio` ? t(`${personKey}.bio`) : '';
+  const description = item.description?.trim() || i18nBio;
+  const metaLine = [dates, role].filter(Boolean).join(' · ');
+
+  if (isPersonasHistoricas) {
+    const { blocks, source } = parseArticleBody(description);
+    const articleBlocks =
+      blocks.length > 0
+        ? blocks
+        : hasPersonI18n && t(`${personKey}.bio`) !== `${personKey}.bio`
+          ? [{ type: 'p' as const, text: t(`${personKey}.bio`) }]
+          : [];
+
+    return (
+      <EditorialNewsArticle
+        backHref={`/biografias/${category}`}
+        title={name}
+        metaLine={metaLine}
+        imageUrl={item.imageUrl ?? ''}
+        imageAlt={name}
+        blocks={articleBlocks}
+        source={source}
+        savedId={item.id}
+        savedStorageKey={PERSONAS_SAVED_KEY}
+        labels={{
+          back: t('biografias.categories.personasHistoricas'),
+          share: t('photo.politicaArticle.share'),
+          save: t('photo.politicaArticle.save'),
+          saved: t('photo.politicaArticle.saved'),
+          byline: t('photo.politicaArticle.byline'),
+          published: t('photo.politicaArticle.published'),
+          caption: t('photo.politicaArticle.caption'),
+          linkCopied: t('photo.politicaArticle.linkCopied'),
+          source: t('photo.source'),
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen w-full min-w-0">
@@ -66,7 +110,6 @@ export function BiografiaDetail({ category, id }: BiografiaDetailProps) {
         </div>
       </header>
 
-      {/* ... Content ... */}
       <div className="container mx-auto px-3 sm:px-6 lg:px-10 py-8 sm:py-12 lg:py-16 max-w-[100vw]">
         <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16">
           <div className="lg:col-span-7 min-w-0">
@@ -91,9 +134,11 @@ export function BiografiaDetail({ category, id }: BiografiaDetailProps) {
               {dates && (
                 <p className="text-sm text-accent-gold font-medium mb-2">{dates}</p>
               )}
-              <p className="text-sm uppercase tracking-[0.15em] text-muted-foreground mb-4">
-                {role}
-              </p>
+              {role ? (
+                <p className="text-sm uppercase tracking-[0.15em] text-muted-foreground mb-4">
+                  {role}
+                </p>
+              ) : null}
               <div className="w-12 h-0.5 bg-accent-gold/60 rounded-full" />
             </div>
 
@@ -102,18 +147,15 @@ export function BiografiaDetail({ category, id }: BiografiaDetailProps) {
                 <h2 className="text-[11px] sm:text-[13px] uppercase tracking-[0.2em] text-muted-foreground mb-3">
                   Biografía
                 </h2>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light">
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed font-light whitespace-pre-line">
                   {description}
                 </p>
               </div>
             )}
 
-            {/* Works Section could be complex to map without strict schema, hiding for now if empty */}
-            {item.works && item.works.length > 0 && (
-              <div className="pt-6 sm:pt-8 border-t border-border">
-                {/* ... Render Works ... */}
-              </div>
-            )}
+            {item.works && item.works.length > 0 ? (
+              <div className="pt-6 sm:pt-8 border-t border-border" />
+            ) : null}
 
             <div className="pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row gap-6 sm:gap-8">
               {prevItem && (

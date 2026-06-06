@@ -9,7 +9,6 @@ import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { HERO_FALLBACK_IMAGES } from '@/data/heroFallbackImages';
 import { ColeccionesPageContent } from '@/app/components/ColeccionesPageContent';
 import { GalleryPageContent } from '@/app/components/GalleryPageContent';
-import { HomeContactSection } from '@/app/components/HomeContactSection';
 
 const HERO_SECTION_IMAGE = '/images/independencia-de-guinea.jpeg';
 
@@ -122,7 +121,6 @@ export function Home() {
 
       <ColeccionesPageContent />
 
-      <HomeContactSection />
     </div>
   );
 }

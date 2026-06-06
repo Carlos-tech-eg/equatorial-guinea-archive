@@ -1857,3 +1857,173 @@
 .masthead-mobile-sub-link.is-active {
   color: var(--nav-accent, #9b7b39);
 }
+
+/* Footer — banda de contacto + pie del archivo (colores y tipografía del sitio) */
+.archive-footer {
+  border-top: 1px solid var(--border);
+}
+
+.archive-footer__contact {
+  background: var(--card);
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.archive-footer__contact-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  min-height: 5.25rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .archive-footer__contact-inner {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+
+  .archive-footer__contact-lead {
+    grid-column: 1 / -1;
+  }
+
+  .archive-footer__contact-title {
+    grid-column: 1;
+  }
+
+  .archive-footer__contact-cta {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.archive-footer__contact-lead {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.archive-footer__contact-title {
+  margin: 0;
+  justify-self: center;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.archive-footer__contact-title-link {
+  position: relative;
+  display: inline-block;
+  color: var(--foreground);
+  text-decoration: none;
+  padding-bottom: 0.12em;
+  background: linear-gradient(var(--museum-amber), var(--museum-amber)) 0 100% / 100% 2px no-repeat;
+  transition: color 0.2s ease;
+}
+
+.archive-footer__contact-title-link:hover {
+  color: var(--museum-amber);
+}
+
+.archive-footer__contact-cta {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  background: var(--museum-amber);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.archive-footer__contact-cta:hover {
+  background: var(--museum-amber-soft);
+  transform: translateX(2px);
+}
+
+.archive-footer__contact-cta:focus-visible {
+  outline: 2px solid var(--museum-amber);
+  outline-offset: 3px;
+}
+
+.archive-footer__main {
+  background: var(--museum-panel);
+  color: var(--foreground);
+}
+
+.archive-footer__layout {
+  display: grid;
+  gap: 2rem;
+  align-items: end;
+}
+
+@media (min-width: 1024px) {
+  .archive-footer__layout {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
+  }
+}
+
+.archive-footer__slogan {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+  color: var(--foreground);
+}
+
+.archive-footer__tagline {
+  margin: 0.85rem 0 0;
+  max-width: 22rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.archive-footer__nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .archive-footer__nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.archive-footer__nav-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.archive-footer__nav-link:hover {
+  border-color: var(--museum-amber);
+  color: var(--foreground);
+}

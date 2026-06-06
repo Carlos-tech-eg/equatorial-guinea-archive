@@ -12,11 +12,16 @@ type BiografiaCardProps = {
 };
 
 export function BiografiaCard({ item, category }: BiografiaCardProps) {
-  // const { t } = useLocale();
+  const { t } = useLocale();
 
-  // Dynamic Properties
-  const name = item.name || item.id;
-  const role = item.category;
+  const personKey = `biografias.persons.${item.id}`;
+  const hasPersonI18n = Boolean(t(`${personKey}.name`) && t(`${personKey}.name`) !== `${personKey}.name`);
+  const name = hasPersonI18n ? t(`${personKey}.name`) : (item.name || item.id);
+  const role = hasPersonI18n
+    ? t(`${personKey}.role`)
+    : item.category === category
+      ? t(`biografias.categories.${category}`)
+      : item.category;
 
   return (
     <Link
