@@ -1,13 +1,11 @@
 'use client';
 
-import { ColeccionesSlider } from '@/app/components/ColeccionesSlider';
-import { ColeccionesMemoriaSection } from '@/app/components/ColeccionesMemoriaSection';
+import { ColeccionesPageContent } from '@/app/components/ColeccionesPageContent';
 
 export function Biografias() {
   return (
     <div className="min-h-screen w-full min-w-0 bg-[#f4f1ea]">
-      <ColeccionesSlider />
-      <ColeccionesMemoriaSection variant="page" />
+      <ColeccionesPageContent />
     </div>
   );
 }

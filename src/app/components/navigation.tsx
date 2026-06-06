@@ -7,7 +7,14 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useLocale } from '@/app/providers';
 import type { Locale } from '@/i18n';
-import { Moon, Sun } from 'lucide-react';
+import { ChevronDown, Moon, Sun } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/app/components/ui/dropdown-menu';
+import { MEMORIA_NACIONAL_SECTIONS } from '@/data/memoriaNacionalSections';
 
 export function Navigation() {
   const [mounted, setMounted] = useState(false);
@@ -19,7 +26,15 @@ export function Navigation() {
   const { theme, setTheme } = useTheme();
   const { t, locale, setLocale } = useLocale();
 
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path: string) => {
+    if (path === '/about') {
+      return pathname === '/about' || pathname === '/contact';
+    }
+    if (path === '/memoria') {
+      return pathname === '/memoria' || pathname.startsWith('/memoria/');
+    }
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
 
 
   const navLinkClass = (path: string) =>
@@ -49,9 +64,26 @@ export function Navigation() {
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className={`${navLinkClass('/gallery')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
-                  {t('nav.gallery')}
-                </Link>
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    className={`${navLinkClass('/memoria')} min-h-[44px] inline-flex items-center justify-center gap-1 border-0 bg-transparent font-inherit cursor-pointer`}
+                  >
+                    {t('nav.memoriaNacional')}
+                    <ChevronDown className="h-3.5 w-3.5 opacity-70" aria-hidden />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="min-w-[12rem]">
+                    {MEMORIA_NACIONAL_SECTIONS.map((section) => (
+                      <DropdownMenuItem key={section.slug} asChild>
+                        <Link
+                          href={section.href}
+                          className="cursor-pointer uppercase tracking-[0.12em] text-xs"
+                        >
+                          {t(section.labelKey)}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </li>
               <li>
                 <Link href="/biografias" className={`${navLinkClass('/biografias')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
@@ -59,9 +91,26 @@ export function Navigation() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className={`${navLinkClass('/about')} min-h-[44px] min-w-[44px] inline-flex items-center justify-center`}>
-                  {t('nav.about')}
-                </Link>
+                <DropdownMenu>
+                  <DropdownMenuTrigger
+                    className={`${navLinkClass('/about')} min-h-[44px] inline-flex items-center justify-center gap-1 border-0 bg-transparent font-inherit cursor-pointer`}
+                  >
+                    {t('nav.about')}
+                    <ChevronDown className="h-3.5 w-3.5 opacity-70" aria-hidden />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="min-w-[11rem]">
+                    <DropdownMenuItem asChild>
+                      <Link href="/about" className="cursor-pointer uppercase tracking-[0.12em] text-xs">
+                        {t('nav.aboutOverview')}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/contact" className="cursor-pointer uppercase tracking-[0.12em] text-xs">
+                        {t('nav.contact')}
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </li>
             </ul>
 

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, useEffect, useCallback, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export type SplitStorySlide = {
@@ -48,12 +48,17 @@ function NavButtons({
   );
 }
 
+const DEFAULT_AUTO_PLAY_MS = 5000;
+
 type SplitStorySliderProps = {
   slides: SplitStorySlide[];
   ariaLabel: string;
   renderTitle?: (slide: SplitStorySlide) => ReactNode;
   /** Sin bordes propios; va dentro de una sección padre (p. ej. Colecciones). */
   embedded?: boolean;
+  /** Avance automático entre diapositivas. */
+  autoPlay?: boolean;
+  autoPlayInterval?: number;
 };
 
 export function SplitStorySlider({
@@ -61,16 +66,36 @@ export function SplitStorySlider({
   ariaLabel,
   renderTitle,
   embedded = false,
+  autoPlay = false,
+  autoPlayInterval = DEFAULT_AUTO_PLAY_MS,
 }: SplitStorySliderProps) {
   const [slideActual, setSlideActual] = useState(0);
+  const [autoPlayPaused, setAutoPlayPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const total = slides.length;
-  const slide = slides[slideActual];
 
-  if (!slide || total === 0) return null;
+  const siguiente = useCallback(() => {
+    setSlideActual((prev) => (total <= 1 ? prev : prev === total - 1 ? 0 : prev + 1));
+  }, [total]);
 
-  const siguiente = () => setSlideActual((prev) => (prev === total - 1 ? 0 : prev + 1));
-  const anterior = () => setSlideActual((prev) => (prev === 0 ? total - 1 : prev - 1));
+  const anterior = useCallback(() => {
+    setSlideActual((prev) => (total <= 1 ? prev : prev === 0 ? total - 1 : prev - 1));
+  }, [total]);
+
+  useEffect(() => {
+    if (!autoPlay || total <= 1 || autoPlayPaused) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reducedMotion.matches) return;
+
+    const id = window.setInterval(siguiente, autoPlayInterval);
+    return () => window.clearInterval(id);
+  }, [autoPlay, autoPlayInterval, total, autoPlayPaused, siguiente]);
+
+  if (total === 0) return null;
+
+  const slide = slides[slideActual] ?? slides[0];
+  if (!slide) return null;
 
   const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.changedTouches[0]?.clientX ?? null;
@@ -96,6 +121,14 @@ export function SplitStorySlider({
         className="relative mx-auto w-full max-w-7xl overflow-hidden font-sans"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
+        onMouseEnter={() => setAutoPlayPaused(true)}
+        onMouseLeave={() => setAutoPlayPaused(false)}
+        onFocusCapture={() => setAutoPlayPaused(true)}
+        onBlurCapture={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+            setAutoPlayPaused(false);
+          }
+        }}
       >
         <div className="relative hidden lg:block lg:h-[600px]">
           <div className="absolute inset-y-0 left-0 w-[35%] bg-[#2a2b2f]" aria-hidden />

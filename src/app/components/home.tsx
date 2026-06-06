@@ -7,7 +7,9 @@ import { useLocale } from '@/app/providers';
 import { AnimateInView } from '@/app/components/AnimateInView';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { HERO_FALLBACK_IMAGES } from '@/data/heroFallbackImages';
-import { ColeccionesMemoriaSection } from '@/app/components/ColeccionesMemoriaSection';
+import { ColeccionesPageContent } from '@/app/components/ColeccionesPageContent';
+import { GalleryPageContent } from '@/app/components/GalleryPageContent';
+import { HomeContactSection } from '@/app/components/HomeContactSection';
 
 const HERO_SECTION_IMAGE = '/images/independencia-de-guinea.jpeg';
 
@@ -62,10 +64,10 @@ export function Home() {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                 <Link
-                  href="/gallery"
+                  href="/memoria"
                   className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 bg-[var(--museum-amber)] px-6 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-black transition hover:bg-[var(--museum-amber-soft)] sm:w-auto"
                 >
-                  {t('nav.gallery')}
+                  {t('nav.memoriaNacional')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
@@ -116,25 +118,11 @@ export function Home() {
         </div>
       </section>
 
-      <ColeccionesMemoriaSection variant="home" />
+      <GalleryPageContent photos={photos} showTitle={false} maxItems={5} homeWallLayout />
 
-      <section className="museum-band bg-background">
-        <div className="container mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-10 lg:py-16">
-          <AnimateInView>
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--museum-amber)]">
-              Ensayo historico
-            </p>
-            <h2 className="font-serif text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
-              {t('home.contextTitle')}
-            </h2>
-          </AnimateInView>
-          <AnimateInView delay={0.08}>
-            <p className="max-w-4xl text-lg leading-9 text-muted-foreground">
-              {t('home.context')}
-            </p>
-          </AnimateInView>
-        </div>
-      </section>
+      <ColeccionesPageContent />
+
+      <HomeContactSection />
     </div>
   );
 }

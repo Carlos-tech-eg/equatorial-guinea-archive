@@ -6,27 +6,71 @@ import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useLocale } from '@/app/providers';
 import type { Locale } from '@/i18n';
-import { Menu, Moon, Search, Sun, X } from 'lucide-react';
+import { ChevronDown, Menu, Moon, Search, Sun, X } from 'lucide-react';
 import { MastheadBrandTitle } from '@/app/components/MastheadBrandTitle';
+import {
+  COLECCIONES_NAV_LINKS,
+  MEMORIA_NACIONAL_SECTIONS,
+} from '@/data/navSubnavLinks';
+
+const MEMORIA_NACIONAL_LINKS = MEMORIA_NACIONAL_SECTIONS.map(({ href, labelKey }) => ({
+  href,
+  labelKey,
+}));
 
 const MAIN_NAV = [
   { href: '/', labelKey: 'nav.home' as const },
-  { href: '/gallery', labelKey: 'nav.gallery' as const },
-  { href: '/biografias', labelKey: 'nav.biografias' as const, hasDropdown: true },
-  { href: '/about', labelKey: 'nav.about' as const },
+  { href: '/memoria', labelKey: 'nav.memoriaNacional' as const, subLinks: MEMORIA_NACIONAL_LINKS },
+  { href: '/biografias', labelKey: 'nav.biografias' as const, subLinks: COLECCIONES_NAV_LINKS },
+  { href: '/about', labelKey: 'nav.aboutOverview' as const },
   { href: '/guinea-hoy', labelKey: 'nav.guineaHoy' as const },
-] as const;
-
-const COLECCIONES_LINKS = [
-  { href: '/biografias/cultura', labelKey: 'biografias.categories.cultura' as const },
-  { href: '/biografias/musica', labelKey: 'biografias.categories.musica' as const },
-  { href: '/biografias/personasHistoricas', labelKey: 'biografias.categories.personasHistoricas' as const },
-  { href: '/biografias/politica', labelKey: 'biografias.categories.politica' as const },
 ] as const;
 
 function isNavActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/';
+  if (href === '/about') {
+    return pathname === '/about' || pathname.startsWith('/about/');
+  }
+  if (href === '/memoria') {
+    return pathname === '/memoria' || pathname.startsWith('/memoria/');
+  }
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function MastheadDropdownPanel({
+  links,
+  pathname,
+  t,
+}: {
+  links: readonly { href: string; labelKey: string }[];
+  pathname: string;
+  t: (key: string) => string;
+}) {
+  return (
+    <div className="absolute left-0 top-full z-50 w-72 bg-[var(--masthead-dropdown-bg,#ebe6dc)] p-6 text-[var(--masthead-dropdown-fg,#4a3728)] shadow-md opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible">
+      <div
+        className="absolute -top-2 left-6 -z-10 h-4 w-4 rotate-45 bg-[var(--masthead-dropdown-bg,#ebe6dc)]"
+        aria-hidden
+      />
+      <ul className="relative z-10 m-0 flex list-none flex-col gap-5 p-0">
+        {links.map((sub) => {
+          const subActive = pathname === sub.href || pathname.startsWith(`${sub.href}/`);
+          return (
+            <li key={sub.href}>
+              <Link
+                href={sub.href}
+                className={`block text-[13px] font-semibold uppercase leading-snug tracking-wide no-underline transition-colors hover:text-[var(--nav-accent,#9b7b39)] ${
+                  subActive ? 'text-[var(--nav-accent,#9b7b39)]' : ''
+                }`}
+              >
+                {t(sub.labelKey)}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 function LanguageSwitcher({
@@ -67,9 +111,91 @@ function SocialIcon({ label, children }: { label: string; children: ReactNode })
   );
 }
 
+function MastheadMobileNavItem({
+  item,
+  pathname,
+  t,
+  expanded,
+  onToggleSub,
+}: {
+  item: (typeof MAIN_NAV)[number];
+  pathname: string;
+  t: (key: string) => string;
+  expanded: boolean;
+  onToggleSub: () => void;
+}) {
+  const active = isNavActive(pathname, item.href);
+  const subLinks = 'subLinks' in item ? item.subLinks : undefined;
+
+  if (!subLinks?.length) {
+    return (
+      <li>
+        <Link
+          href={item.href}
+          className={`masthead-mobile-link block px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] no-underline ${
+            active ? 'is-active' : ''
+          }`}
+        >
+          {t(item.labelKey)}
+        </Link>
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <div className="flex items-stretch border-b border-[var(--masthead-border,#e5e5e5)]">
+        <Link
+          href={item.href}
+          className={`masthead-mobile-link flex min-h-[48px] flex-1 items-center px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] no-underline ${
+            active ? 'is-active' : ''
+          }`}
+        >
+          {t(item.labelKey)}
+        </Link>
+        <button
+          type="button"
+          className="masthead-mobile-dropdown-btn inline-flex w-12 shrink-0 items-center justify-center border-l border-[var(--masthead-border,#e5e5e5)] text-[var(--nav-accent,#9b7b39)]"
+          aria-expanded={expanded}
+          aria-controls={`mobile-sub-${item.href}`}
+          aria-label={expanded ? 'Cerrar submenú' : 'Abrir submenú'}
+          onClick={onToggleSub}
+        >
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+            aria-hidden
+          />
+        </button>
+      </div>
+      {expanded ? (
+        <ul
+          id={`mobile-sub-${item.href}`}
+          className="masthead-mobile-sub m-0 list-none border-b border-[var(--masthead-border,#e5e5e5)] p-0"
+        >
+          {subLinks.map((sub) => (
+            <li key={sub.href}>
+              <Link
+                href={sub.href}
+                className={`masthead-mobile-sub-link block py-2.5 pl-8 pr-5 text-[10px] font-medium uppercase tracking-[0.16em] no-underline ${
+                  pathname === sub.href || pathname.startsWith(`${sub.href}/`)
+                    ? 'is-active'
+                    : ''
+                }`}
+              >
+                {t(sub.labelKey)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </li>
+  );
+}
+
 export function TickerMasthead() {
   const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpandedHref, setMobileExpandedHref] = useState<string | null>(null);
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const { t, locale, setLocale } = useLocale();
@@ -80,7 +206,12 @@ export function TickerMasthead() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setMobileExpandedHref(null);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) setMobileExpandedHref(null);
+  }, [mobileOpen]);
 
   const iconBtn = 'masthead-icon-btn inline-flex h-8 w-8 items-center justify-center';
 
@@ -91,7 +222,7 @@ export function TickerMasthead() {
           <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid min-h-[72px] grid-cols-[auto_1fr_auto] items-center gap-2 py-3 sm:min-h-[80px] sm:grid-cols-[1fr_auto_1fr] sm:gap-4 sm:py-3.5">
               <div className="flex items-center gap-1 sm:gap-3 sm:justify-self-start">
-                <Link href="/gallery" className={iconBtn} aria-label={t('nav.search')}>
+                <Link href="/memoria/documentos" className={iconBtn} aria-label={t('nav.search')}>
                   <Search className="h-4 w-4 stroke-[1.75]" />
                 </Link>
                 <button
@@ -150,7 +281,7 @@ export function TickerMasthead() {
             <ul className="flex list-none items-center justify-center m-0 p-0">
               {MAIN_NAV.map((item, index) => {
                 const active = isNavActive(pathname, item.href);
-                if ('hasDropdown' in item && item.hasDropdown) {
+                if ('subLinks' in item && item.subLinks) {
                   return (
                     <li key={item.href} className="flex items-center">
                       {index > 0 && <span className="masthead-nav-divider" aria-hidden />}
@@ -164,30 +295,7 @@ export function TickerMasthead() {
                             ▼
                           </span>
                         </Link>
-                        <div className="absolute left-0 top-full z-50 w-72 bg-[var(--masthead-dropdown-bg,#ebe6dc)] p-6 text-[var(--masthead-dropdown-fg,#4a3728)] shadow-md opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible">
-                          <div
-                            className="absolute -top-2 left-6 -z-10 h-4 w-4 rotate-45 bg-[var(--masthead-dropdown-bg,#ebe6dc)]"
-                            aria-hidden
-                          />
-                          <ul className="relative z-10 m-0 flex list-none flex-col gap-5 p-0">
-                            {COLECCIONES_LINKS.map((sub) => {
-                              const subActive =
-                                pathname === sub.href || pathname.startsWith(`${sub.href}/`);
-                              return (
-                                <li key={sub.href}>
-                                  <Link
-                                    href={sub.href}
-                                    className={`block text-[13px] font-semibold uppercase leading-snug tracking-wide no-underline transition-colors hover:text-[var(--nav-accent,#9b7b39)] ${
-                                      subActive ? 'text-[var(--nav-accent,#9b7b39)]' : ''
-                                    }`}
-                                  >
-                                    {t(sub.labelKey)}
-                                  </Link>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
+                        <MastheadDropdownPanel links={item.subLinks} pathname={pathname} t={t} />
                       </div>
                     </li>
                   );
@@ -216,38 +324,19 @@ export function TickerMasthead() {
             className="masthead-mobile-nav border-t md:hidden"
             aria-label="Principal móvil"
           >
-            <ul className="m-0 list-none divide-y divide-[var(--masthead-border,#e5e5e5)] p-0">
-              {MAIN_NAV.map((item) => {
-                const active = isNavActive(pathname, item.href);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className={`masthead-mobile-link block px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] no-underline ${
-                        active ? 'is-active' : ''
-                      }`}
-                    >
-                      {t(item.labelKey)}
-                    </Link>
-                    {'hasDropdown' in item && item.hasDropdown && (
-                      <ul className="masthead-mobile-sub m-0 list-none border-t p-0">
-                        {COLECCIONES_LINKS.map((sub) => (
-                          <li key={sub.href}>
-                            <Link
-                              href={sub.href}
-                              className={`masthead-mobile-sub-link block py-2.5 pl-8 pr-5 text-[10px] font-medium uppercase tracking-[0.16em] no-underline ${
-                                pathname === sub.href ? 'is-active' : ''
-                              }`}
-                            >
-                              {t(sub.labelKey)}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                );
-              })}
+            <ul className="m-0 list-none p-0">
+              {MAIN_NAV.map((item) => (
+                <MastheadMobileNavItem
+                  key={item.href}
+                  item={item}
+                  pathname={pathname}
+                  t={t}
+                  expanded={mobileExpandedHref === item.href}
+                  onToggleSub={() =>
+                    setMobileExpandedHref((prev) => (prev === item.href ? null : item.href))
+                  }
+                />
+              ))}
             </ul>
           </nav>
         )}

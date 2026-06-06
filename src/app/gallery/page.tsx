@@ -1,5 +1,5 @@
-import { Gallery } from '@/app/components/gallery';
+import { redirect } from 'next/navigation';
 
 export default function GalleryPage() {
-  return <Gallery />;
+  redirect('/memoria/documentos');
 }

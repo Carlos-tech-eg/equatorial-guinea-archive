@@ -13,6 +13,7 @@ const CATEGORIES = [
   { key: 'musica' as const, personIds: ['makossa'] },
   { key: 'personasHistoricas' as const, personIds: ['ntutumu', 'colonial'] },
   { key: 'politica' as const, personIds: ['macias'] },
+  { key: 'deporte' as const, personIds: ['emilio-nsue'] },
 ] as const;
 
 export function BiografiasWidget() {

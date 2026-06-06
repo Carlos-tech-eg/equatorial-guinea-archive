@@ -44,6 +44,7 @@ const BIO_CATEGORIES = [
   { value: 'musica', label: 'Música' },
   { value: 'personasHistoricas', label: 'Personas Históricas' },
   { value: 'politica', label: 'Política' },
+  { value: 'deporte', label: 'Deporte' },
 ] as const;
 
 type ImageSource = 'url' | 'upload' | 'gdrive';

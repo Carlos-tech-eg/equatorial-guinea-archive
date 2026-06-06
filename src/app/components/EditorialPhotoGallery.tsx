@@ -27,6 +27,7 @@ type EditorialPhotoGalleryProps = {
     text1Key?: string;
     text2Key?: string;
   };
+  emptyHint?: string;
 };
 
 export function EditorialPhotoGallery({
@@ -36,6 +37,7 @@ export function EditorialPhotoGallery({
   hideIntro = false,
   embedded = false,
   intro,
+  emptyHint,
 }: EditorialPhotoGalleryProps) {
   const { t } = useLocale();
 
@@ -56,7 +58,9 @@ export function EditorialPhotoGallery({
         viewport={{ once: true, amount: 0.04 }}
       >
         {photos.length === 0 ? (
-          <p className="px-6 py-16 text-center text-sm text-[#5c4d3d]">{t('gallery.empty')}</p>
+          <p className="max-w-xl mx-auto px-6 py-16 text-center text-sm leading-relaxed text-[#5c4d3d]">
+            {emptyHint ?? t('gallery.empty')}
+          </p>
         ) : (
           <div className="gallery-grid">
             {photos.map((photo) => (

@@ -6,4 +6,5 @@ export const BIOGRAFIA_CATEGORY_BACKGROUNDS: Record<BiografiaCategory, string> =
   politica: '/images/categories/politica.png',
   cultura: '/images/categories/cultura.png',
   musica: '/images/categories/musica.png',
+  deporte: '/images/categories/deporte.png',
 };

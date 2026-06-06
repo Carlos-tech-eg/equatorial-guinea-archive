@@ -38,6 +38,8 @@ import {
 } from '@/app/components/ui/select';
 import { Plus, Pencil, Trash2, Link2, Upload, Cloud } from 'lucide-react';
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
+import { normalizePhotoCategory } from '@/lib/photoCategories';
+import { formatFirebaseError } from '@/lib/firebaseErrors';
 
 type ImageSource = 'url' | 'upload' | 'gdrive';
 
@@ -57,6 +59,7 @@ const PHOTO_CATEGORIES = [
   { value: 'politica', label: 'Política' },
   { value: 'cultura', label: 'Cultura' },
   { value: 'personasHistoricas', label: 'Personas Históricas' },
+  { value: 'deporte', label: 'Deporte' },
   { value: 'otro', label: 'Otro' },
 ] as const;
 
@@ -127,16 +130,24 @@ export default function AdminPhotosPage() {
   const save = async () => {
     setSaveError(null);
     setSaveSuccess(false);
+
+    const imageUrl = form.imageUrl?.trim() || '';
+    if (!imageUrl) {
+      setSaveError('Añade una imagen: sube un archivo, pega una URL o usa Google Drive antes de guardar.');
+      return;
+    }
+
     setSaving(true);
     try {
+      const categorySlug = normalizePhotoCategory(form.category) || form.category?.trim() || '';
       const data = {
         title: form.title || '',
         year: form.year || '',
         location: form.location || '',
         description: form.description || '',
         source: form.source || '',
-        imageUrl: form.imageUrl || '',
-        category: form.category || '',
+        imageUrl,
+        category: categorySlug,
         bio: form.bio || '',
         updatedAt: serverTimestamp(),
       };
@@ -150,8 +161,10 @@ export default function AdminPhotosPage() {
         setTimeout(() => closeModal(), 1500);
       }
     } catch (e: unknown) {
-      const msg = e && typeof e === 'object' && 'message' in e ? String((e as { message: string }).message) : 'Failed to save';
-      setSaveError(msg);
+      const raw =
+        e && typeof e === 'object' && 'message' in e ? String((e as { message: string }).message) : 'Failed to save';
+      const code = e && typeof e === 'object' && 'code' in e ? String((e as { code: string }).code) : '';
+      setSaveError(formatFirebaseError(raw, code));
       console.error(e);
     } finally {
       setSaving(false);
@@ -195,7 +208,7 @@ export default function AdminPhotosPage() {
       } else if (code === 'storage/object-not-found' || message.includes('bucket')) {
         setUploadError('Storage bucket not found. Check Firebase Console → Storage is enabled for this project.');
       } else {
-        setUploadError(message);
+        setUploadError(formatFirebaseError(message, code));
       }
       console.error('Upload error:', err);
     } finally {
@@ -214,18 +227,26 @@ export default function AdminPhotosPage() {
   return (
     <div className="space-y-6">
       <p className="text-sm text-muted-foreground">
-        Photos you add or edit here appear on the main site gallery in real time. Use &quot;View gallery on site&quot; to check.
+        Las fotos con categoría Política aparecen en Colecciones → Política e Instituciones. Todas las fotos también en Memoria Nacional → Documentos y Archivos. Elige categoría y sube la imagen antes de guardar.
       </p>
       <div className="flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-3">
           <h1 className="font-serif text-2xl font-light text-foreground">Photos</h1>
           <a
-            href="/gallery"
+            href="/biografias/politica"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-accent-gold hover:underline"
           >
-            View gallery on site →
+            Ver Política e Instituciones →
+          </a>
+          <a
+            href="/memoria/documentos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground hover:text-accent-gold hover:underline"
+          >
+            Galería
           </a>
         </div>
         <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>

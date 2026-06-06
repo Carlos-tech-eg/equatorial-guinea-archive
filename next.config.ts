@@ -3,7 +3,11 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   transpilePackages: ['lucide-react'],
   async redirects() {
-    return [{ source: '/guinea-hoy', destination: '/', permanent: false }];
+    return [
+      { source: '/guinea-hoy', destination: '/', permanent: false },
+      { source: '/gallery', destination: '/memoria/documentos', permanent: false },
+      { source: '/contact', destination: '/#contacto', permanent: false },
+    ];
   },
   images: {
     remotePatterns: [

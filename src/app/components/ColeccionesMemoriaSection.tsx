@@ -1,65 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import { useLocale } from '@/app/providers';
 import { AnimateInView } from '@/app/components/AnimateInView';
 import { BIOGRAFIA_CATEGORY_BACKGROUNDS } from '@/data/biografiaCategoryBackgrounds';
-import type { BiografiaCategory } from '@/data/biografias';
+import { BIOGRAFIA_CATEGORIES } from '@/data/biografias';
 
-const CATEGORY_KEYS: BiografiaCategory[] = [
-  'cultura',
-  'musica',
-  'personasHistoricas',
-  'politica',
-];
-
-type ColeccionesMemoriaSectionProps = {
-  /** En inicio: encabezado + enlace. En Colecciones: solo la cuadrícula (el texto va arriba del slider). */
-  variant?: 'home' | 'page';
-};
-
-export function ColeccionesMemoriaSection({ variant = 'page' }: ColeccionesMemoriaSectionProps) {
+export function ColeccionesMemoriaSection() {
   const { t } = useLocale();
-  const isHome = variant === 'home';
 
   return (
-    <section
-      className={`museum-band bg-[#f4f1ea] ${isHome ? 'border-t border-border/80' : ''}`}
-      aria-labelledby={isHome ? 'memoria-nacional-heading' : undefined}
-    >
-      <div className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
-        {isHome && (
-          <AnimateInView>
-            <div className="mb-8 flex flex-col justify-between gap-4 border-b border-[var(--museum-line)] pb-5 sm:flex-row sm:items-end">
-              <div className="min-w-0">
-                <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--museum-amber)]">
-                  {t('biografias.label')}
-                </p>
-                <h2
-                  id="memoria-nacional-heading"
-                  className="font-serif text-3xl font-semibold text-foreground sm:text-4xl lg:text-5xl"
-                >
-                  {t('biografias.title')}
-                </h2>
-              </div>
-              <Link
-                href="/biografias"
-                className="inline-flex min-h-[44px] shrink-0 items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[var(--museum-amber)] transition hover:text-[var(--museum-amber-soft)]"
-              >
-                {t('biografias.viewAll')}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </AnimateInView>
-        )}
-
-        <div className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-4 ${isHome ? '' : 'pt-2'}`}>
-          {CATEGORY_KEYS.map((category, index) => (
+    <section className="museum-band bg-[#f4f1ea]">
+      <div className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-10 lg:pb-16">
+        <div className="grid gap-4 pt-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+          {BIOGRAFIA_CATEGORIES.map((category, index) => (
             <AnimateInView key={category} delay={index * 0.04}>
               <Link
                 href={`/biografias/${category}`}
-                className="group relative block min-h-[200px] overflow-hidden border border-[var(--museum-line)] transition hover:-translate-y-1 hover:border-[var(--museum-amber)] sm:min-h-[220px]"
+                className="group relative block min-h-[200px] overflow-hidden border border-border transition hover:-translate-y-1 hover:border-[var(--museum-amber)] sm:min-h-[220px]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"

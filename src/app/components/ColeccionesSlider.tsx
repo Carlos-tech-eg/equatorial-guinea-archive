@@ -10,7 +10,7 @@ function ColeccionesPageHeader() {
   return (
     <header
       id="memoria-nacional-heading"
-      className="max-w-3xl border-b border-[var(--museum-line)]/60 pb-6 lg:pb-8"
+      className="mx-auto max-w-3xl border-b border-[var(--museum-line)]/60 pb-6 text-center lg:max-w-4xl lg:pb-8"
     >
       <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.24em] text-[var(--museum-amber)]">
         {t('biografias.label')}
@@ -18,7 +18,7 @@ function ColeccionesPageHeader() {
       <h1 className="font-serif text-3xl font-semibold leading-tight text-[#4a3728] sm:text-4xl lg:text-5xl">
         {t('biografias.title')}
       </h1>
-      <p className="mt-3 text-sm leading-relaxed text-[#4a3728]/85 sm:text-base lg:max-w-2xl">
+      <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#4a3728]/85 sm:text-base lg:max-w-3xl">
         {t('biografias.subtitle')}
       </p>
     </header>
@@ -45,13 +45,15 @@ export function ColeccionesSlider() {
     >
       <div className="mx-auto w-full max-w-7xl">
         {/* Encabezado + slider: un solo bloque visual */}
-        <div className="px-4 pt-8 sm:px-6 sm:pt-10 lg:px-10 lg:pt-12">
+        <div className="px-4 pt-8 text-center sm:px-6 sm:pt-10 lg:px-10 lg:pt-12">
           <ColeccionesPageHeader />
         </div>
 
         <div className="mt-6 lg:mt-8">
           <SplitStorySlider
             embedded
+            autoPlay
+            autoPlayInterval={5000}
             slides={slides}
             ariaLabel={t('biografias.label')}
             renderTitle={(slide) => (

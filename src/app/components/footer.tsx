@@ -32,16 +32,18 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground sm:grid-cols-3">
             {[
               ['/', t('nav.home')],
-              ['/gallery', t('nav.gallery')],
+              ['/memoria', t('nav.memoriaNacional')],
+              ['/memoria/documentos', t('memoria.sections.documentos')],
               ['/biografias', t('nav.biografias')],
-              ['/about', t('nav.about')],
+              ['/about', t('nav.aboutOverview')],
+              ['/#contacto', t('nav.contact')],
               ['/guinea-hoy', 'Guinea Hoy'],
               ['/admin', 'Admin'],
             ].map(([href, label]) => (
               <Link
                 key={href}
                 href={href}
-                className="inline-flex min-h-[44px] items-center justify-between border border-[var(--museum-line)] px-3 py-2 transition hover:border-[var(--museum-amber)] hover:text-foreground"
+                className="borde-bbc inline-flex min-h-[44px] items-center justify-between transition hover:border-[var(--museum-amber)] hover:text-foreground"
               >
                 {label}
                 <ArrowUpRight className="h-3.5 w-3.5" />

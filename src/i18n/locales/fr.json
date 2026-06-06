@@ -2,8 +2,11 @@
   "nav": {
     "home": "Accueil",
     "gallery": "Galerie",
+    "memoriaNacional": "Mémoire nationale",
     "biografias": "Collections",
     "about": "À propos",
+    "aboutOverview": "À propos de nous",
+    "contact": "Contact",
     "guineaHoy": "Guinée aujourd'hui",
     "search": "Rechercher",
     "brand": "Guinée équatoriale",
@@ -13,13 +16,46 @@
     "period": "Période coloniale 1778–1968",
     "title": "Un témoignage visuel de l'histoire coloniale",
     "intro": "Cette archive numérique présente une sélection de photographies historiques documentant la Guinée équatoriale pendant la période coloniale espagnole.",
+    "hero": {
+      "highlightA": "Archives historiques",
+      "titleMid": " de Guinée équatoriale documentent la ",
+      "highlightB": "période coloniale",
+      "body": "Ce dépôt numérique préserve et présente des photographies historiques du territoire (1778–1968). À partir de fonds nationaux, de collections privées et d'institutions, il met à la disposition des chercheurs, des enseignants et du public un témoignage visuel de l'architecture, de la vie urbaine et de l'organisation sociale de l'époque."
+    },
     "cta": "Voir la collection",
     "purposeTitle": "Objectif et portée",
     "purpose1": "Ces images constituent un témoignage historique important sur le paysage architectural, social et culturel de l'époque. Les photographies proviennent de fonds nationaux, de collections privées et d'institutions historiques.",
     "purpose2": "Chaque image est accompagnée d'informations sur sa date, son lieu et sa portée historique. Cette archive est destinée à l'enseignement et à la recherche.",
     "contextTitle": "Contexte historique",
     "context": "La Guinée équatoriale, composée du continent (Río Muni) et de plusieurs îles (dont Bioko, anciennement Fernando Pó), fut sous domination coloniale espagnole pendant près de deux siècles. Les images datent de la fin du xixe au milieu du xxe siècle et documentent le développement urbain, les infrastructures et l'organisation sociale.",
-    "viewGallery": "Voir toute la galerie"
+    "viewGallery": "Voir toute la galerie",
+    "contact": {
+      "title": "Contact",
+      "formTitle": "Écrivez-nous",
+      "formSubtitle": "Vous disposez de photographies, de documents ou de questions sur les archives ? Envoyez-nous un message.",
+      "namePlaceholder": "Votre nom",
+      "emailPlaceholder": "Votre adresse e-mail",
+      "messagePlaceholder": "Saisissez votre message ici…",
+      "send": "Envoyer",
+      "address": "Malabo, Guinée équatoriale — Archives historiques nationales",
+      "phone": "+44 7868 959948",
+      "web": "eq-guinea-history.org",
+      "mailSubject": "Demande — Archives historiques GE",
+      "mailName": "Nom",
+      "mailEmail": "E-mail"
+    }
+  },
+  "memoria": {
+    "label": "Archives historiques",
+    "homeIntro": "Explorez les archives par introduction, chronologies et documents photographiques de la période coloniale.",
+    "viewAll": "Explorer les archives",
+    "epocasIntro": "Repères et contextes qui structurent la mémoire visuelle de la Guinée équatoriale du XVIIIe siècle à l'indépendance.",
+    "goToDocumentos": "Voir documents et archives",
+    "sections": {
+      "introduccion": "Introduction",
+      "epocas": "Époques historiques",
+      "documentos": "Documents et archives"
+    }
   },
   "gallery": {
     "label": "Collection",
@@ -30,7 +66,8 @@
     "duration": "Durée",
     "untitled": "Sans titre",
     "defaultSource": "Archives historiques",
-    "empty": "Il n'y a pas encore de photographies dans cette collection."
+    "empty": "Il n'y a pas encore de photographies dans cette collection.",
+    "emptyPolitica": "Aucune photo avec la catégorie « Politique » et une URL d'image. Dans Admin → Photos, modifiez chaque photo : téléversez l'image, choisissez Politique et enregistrez."
   },
   "photo": {
     "of": "sur",
@@ -42,11 +79,29 @@
     "next": "Suivant",
     "backToGallery": "Galerie",
     "notFound": "Photographie introuvable",
-    "returnToGallery": "Retour à la galerie"
+    "returnToGallery": "Retour à la galerie",
+    "politicaArticle": {
+      "back": "Politique et institutions",
+      "share": "Partager",
+      "save": "Enregistrer",
+      "saved": "Enregistré",
+      "byline": "Archives historiques de la Guinée équatoriale",
+      "published": "Document d'archive",
+      "caption": "Image d'archive historique",
+      "linkCopied": "Lien copié"
+    }
   },
   "about": {
     "label": "Information",
     "title": "À propos de cette archive",
+    "heroTitle": "À propos de nous",
+    "heroIntro": "Une archive numérique dédiée à préserver, étudier et partager la mémoire visuelle de la Guinée équatoriale pendant la période coloniale et la transition vers l'indépendance.",
+    "institutionTitle": "Archives historiques de Guinée équatoriale",
+    "pullQuote1": "Ces images sont des sources essentielles pour comprendre la transformation du territoire, de son architecture et de la vie de ses habitants.",
+    "statsLabel": "Période documentée",
+    "statsValue": "1778–1968",
+    "statsIntro": "Chaque photographie a été authentifiée et cataloguée. La datation repose sur les archives, l'analyse architecturale et le croisement avec les sources historiques.",
+    "pullQuote2": "Nous reconnaissons que l'histoire coloniale comporte des sujets difficiles et l'abordons avec un contexte et un regard critiques appropriés.",
     "missionTitle": "Mission",
     "mission1": "Ce dépôt numérique préserve et présente des photographies historiques de la période coloniale espagnole (1778–1968). Le projet met ces documents à la disposition des chercheurs, des enseignants et du public.",
     "mission2": "La collection porte sur l'architecture, la société et le développement urbain à l'époque coloniale. Ces images sont des sources essentielles pour comprendre la transformation du territoire et de ses habitants.",
@@ -75,7 +130,7 @@
   "biografias": {
     "label": "COLLECTIONS",
     "title": "MÉMOIRE NATIONALE",
-    "subtitle": "Biographies et archives organisées en quatre salles : culture et traditions, musique et art, personnages historiques, et politique et institutions.",
+    "subtitle": "Biographies et archives organisées en cinq salles : culture, musique, personnages historiques, politique et institutions, et sport.",
     "readMore": "Lire la suite",
     "viewAll": "Voir tout",
     "backToBiografias": "Collections",
@@ -86,9 +141,100 @@
       "cultura": "Culture et traditions",
       "musica": "Musique et art",
       "personasHistoricas": "Personnages historiques",
-      "politica": "Politique et institutions"
+      "politica": "Politique et institutions",
+      "deporte": "Sport"
     },
     "exploreCollection": "Explorer la collection",
+    "categoryIntro": {
+      "cultura": {
+        "body1": "Cette salle documente rituels, traditions orales, artisanat et pratiques communautaires qui transmettent la mémoire collective des peuples de Guinée équatoriale pendant la période coloniale et au XXe siècle.",
+        "pullQuote": "Le patrimoine immatériel est aussi déterminant que les photographies pour comprendre qui habitait le territoire et comment il s'organisait.",
+        "body2": "Les images proviennent d'archives nationales, de collections privées et de recherches ethnographiques. Chaque pièce est présentée avec son contexte pour l'étude et la diffusion."
+      },
+      "musica": {
+        "body1": "Compositeurs, interprètes et expressions artistiques qui documentent la créativité sonore et visuelle du pays au long du XXe siècle.",
+        "pullQuote": "La musique et l'art ont été des espaces de rencontre entre tradition locale et modernité coloniale.",
+        "body2": "La collection rassemble portraits, représentations et scènes de vie culturelle. Les documents sont accessibles aux enseignants, chercheurs et au public."
+      },
+      "personasHistoricas": {
+        "body1": "Portraits et récits de figures qui ont marqué la politique, la culture et la vie publique à Bioko, en Río Muni et dans l'archipel.",
+        "pullQuote": "Les biographies visuelles permettent de reconstruire des trajectoires individuelles au sein de processus historiques plus larges.",
+        "body2": "Chaque entrée combine image d'archive et texte de médiation. La sélection privilégie des personnages dont la documentation est vérifiable dans les fonds historiques."
+      },
+      "politica": {
+        "body1": "Cette salle rassemble photographies et documents visuels sur l'indépendance, les institutions coloniales et la construction de l'État équatoguinéen après 1968.",
+        "pullQuote": "Indépendance, administration coloniale et construction de l'État : documents visuels d'un pays en transformation.",
+        "body2": "Les images proviennent des archives générales et de fonds documentant cérémonies, administration et figures politiques. Elles sont cataloguées pour la recherche et la consultation publique."
+      },
+      "deporte": {
+        "body1": "Footballeurs, compétitions et moments qui projettent la Guinée équatoriale sur la scène sportive nationale et internationale.",
+        "pullQuote": "Le sport a été l'un des visages les plus visibles du pays sur la scène africaine et mondiale.",
+        "body2": "La collection comprend la sélection nationale, les qualifications historiques et les portraits de joueurs emblématiques. Le contenu est mis à jour depuis le panneau d'administration."
+      }
+    },
+    "politicaMoreNews": {
+      "sectionTitle": "PLUS D'ARCHIVES POLITIQUES",
+      "save": "Enregistrer",
+      "prev": "Précédent",
+      "next": "Suivant"
+    },
+    "politicaMockNews": {
+      "sourceLabel": "Archive illustrative",
+      "rail": {
+        "0": {
+          "title": "Défilé militaire à Santa Isabel, 1968",
+          "summary": "Formation de troupes et autorités dans les rues de Santa Isabel pendant la transition vers l'indépendance."
+        },
+        "1": {
+          "title": "Macías Nguema lors d'un acte public",
+          "summary": "Le premier président salue la foule lors d'un acte officiel après la proclamation de la République."
+        },
+        "2": {
+          "title": "Mouvements nationalistes en Río Muni",
+          "summary": "Matériel visuel d'assemblées, drapeaux et leaderships locaux dans les années 1950."
+        },
+        "3": {
+          "title": "Bioko sous administration coloniale",
+          "summary": "Photographies de ports, bâtiments et autorités à Santa Isabel avant 1968."
+        },
+        "4": {
+          "title": "Défilés et présence militaire",
+          "summary": "Images de formations et uniformes lors d'actes civiques et commémorations nationales."
+        },
+        "5": {
+          "title": "Délégations et visites officielles",
+          "summary": "Réceptions diplomatiques et rencontres avec des représentants étrangers à Mongomo."
+        },
+        "6": {
+          "title": "Vie politique à la frontière continentale",
+          "summary": "Documentation de réunions et d'espaces publics à Ebebiyín et dans l'intérieur de Río Muni."
+        },
+        "7": {
+          "title": "Fonds photographique récent",
+          "summary": "Pièces numérisées du fonds politique disponibles pour consultation dans les archives en ligne."
+        }
+      }
+    },
+    "politicaEditorial": {
+      "featuredTitle": "Élections Guinée équatoriale",
+      "featuredSummary": "Foule rassemblée lors d'un acte politique en plein air : assemblée populaire et mobilisation civique à un moment clé de l'histoire du pays.",
+      "left1": {
+        "title": "Francisco Macías Nguema",
+        "summary": "Portrait du premier président de la Guinée équatoriale après les élections de 1968, dans le contexte de la transition vers l'indépendance."
+      },
+      "left2": {
+        "title": "Indépendance de la Guinée équatoriale le 12 octobre 1968 à Santa Isabel",
+        "summary": ""
+      },
+      "right1": {
+        "title": "Des militaires découvrent des valises d'argent au palais de Macías Nguema, 1979",
+        "summary": "Après le coup d'État, les forces armées découvrent d'importantes sommes en espèces au palais présidentiel, symbole de la fin du régime de Macías."
+      },
+      "right2": {
+        "title": "Coup de la liberté 1979",
+        "summary": "Les pièces sont cataloguées pour la recherche, l'enseignement et la diffusion avec un contexte historique vérifié."
+      }
+    },
     "collectionSlides": {
       "cultura": {
         "meta": "COLLECTION {{n}}",
@@ -109,9 +255,20 @@
         "meta": "COLLECTION {{n}}",
         "tema": "POLITIQUE, INSTITUTIONS",
         "extracto": "Indépendance, administration coloniale et construction de l'État : documents visuels d'un pays en transformation."
+      },
+      "deporte": {
+        "meta": "COLLECTION {{n}}",
+        "tema": "SPORT, SÉLECTION",
+        "extracto": "Footballeurs, compétitions et moments qui projettent la Guinée équatoriale sur la scène sportive nationale et internationale."
       }
     },
     "persons": {
+      "emilio-nsue": {
+        "name": "Emilio Nsue",
+        "dates": "1980–",
+        "role": "Capitaine de l'équipe nationale de football",
+        "bio": "Emilio Nsue López est le footballeur le plus titré de Guinée équatoriale et capitaine des Nzalang Nacional. Avec le numéro 10, il a été une figure clé des qualifications historiques de la sélection, notamment en Coupe d'Afrique des Nations."
+      },
       "macias": {
         "name": "Francisco Macías Nguema",
         "dates": "1924–1979",

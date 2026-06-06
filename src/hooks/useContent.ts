@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import type { BiografiaCategory } from "@/data/biografias";
+import { normalizePhotoCategory } from "@/lib/photoCategories";
+import { formatFirebaseError } from "@/lib/firebaseErrors";
 
 /** Detecta URLs de Firebase/GCS aunque el campo en Firestore use otro nombre. */
 function looksLikeFirebaseOrGcsHttpUrl(s: string): boolean {
@@ -77,36 +80,62 @@ export interface BiografiaItem {
     works?: unknown[];
 }
 
-export function usePhotos() {
+export function usePhotos(category?: BiografiaCategory) {
     const [photos, setPhotos] = useState<Photo[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const q = query(collection(db, "photos"));
 
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const items = snapshot.docs.map((docSnap) => {
-                const d = docSnap.data() as Record<string, unknown>;
-                const imageUrl = pickImageUrlString(d);
-                return {
-                    id: docSnap.id,
-                    ...d,
-                    imageUrl,
-                };
-            }) as (Photo & { createdAt?: { toMillis?: () => number }; updatedAt?: { toMillis?: () => number } })[];
-            // Newest first so admin uploads appear at top on the site
-            items.sort((a, b) => (b.createdAt?.toMillis?.() ?? b.updatedAt?.toMillis?.() ?? 0) - (a.createdAt?.toMillis?.() ?? a.updatedAt?.toMillis?.() ?? 0));
-            setPhotos(items as Photo[]);
-            setLoading(false);
-        }, (err) => {
-            console.error("Error fetching photos:", err);
-            setLoading(false);
-        });
+        const unsubscribe = onSnapshot(
+            q,
+            (snapshot) => {
+                setError(null);
+                let items = snapshot.docs.map((docSnap) => {
+                    const d = docSnap.data() as Record<string, unknown>;
+                    const imageUrl = pickImageUrlString(d);
+                    const rawCategory = typeof d.category === "string" ? d.category : "";
+                    const categorySlug = normalizePhotoCategory(rawCategory);
+                    return {
+                        id: docSnap.id,
+                        ...d,
+                        imageUrl,
+                        category: categorySlug || rawCategory,
+                    };
+                }) as (Photo & {
+                    createdAt?: { toMillis?: () => number };
+                    updatedAt?: { toMillis?: () => number };
+                })[];
+
+                if (category) {
+                    items = items.filter((p) => normalizePhotoCategory(p.category) === category);
+                }
+
+                items.sort(
+                    (a, b) =>
+                        (b.createdAt?.toMillis?.() ?? b.updatedAt?.toMillis?.() ?? 0) -
+                        (a.createdAt?.toMillis?.() ?? a.updatedAt?.toMillis?.() ?? 0),
+                );
+                setPhotos(items as Photo[]);
+                setLoading(false);
+            },
+            (err) => {
+                console.error("Error fetching photos:", err);
+                const msg = err instanceof Error ? err.message : "Error al leer Firestore";
+                const code =
+                    err && typeof err === "object" && "code" in err
+                        ? String((err as { code: string }).code)
+                        : "";
+                setError(formatFirebaseError(msg, code));
+                setLoading(false);
+            },
+        );
 
         return () => unsubscribe();
-    }, []);
+    }, [category]);
 
-    return { photos, loading };
+    return { photos, loading, error };
 }
 
 export function useBiographies() {

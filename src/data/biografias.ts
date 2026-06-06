@@ -1,4 +1,9 @@
-export type BiografiaCategory = 'cultura' | 'musica' | 'personasHistoricas' | 'politica';
+export type BiografiaCategory =
+  | 'cultura'
+  | 'musica'
+  | 'personasHistoricas'
+  | 'politica'
+  | 'deporte';
 
 export interface BiografiaWork {
   id: string;
@@ -15,6 +20,15 @@ export interface BiografiaItem {
 }
 
 export const BIOGRAFIA_CATEGORIES: BiografiaCategory[] = [
+  'cultura',
+  'musica',
+  'personasHistoricas',
+  'politica',
+  'deporte',
+];
+
+/** Cuatro colecciones destacadas en inicio; el resto en /biografias. */
+export const HOME_MEMORIA_CATEGORIES: BiografiaCategory[] = [
   'cultura',
   'musica',
   'personasHistoricas',
@@ -48,6 +62,9 @@ const MOCK_IMAGES = {
   },
   politica: {
     macias: '/images/francisco-macias-nguema.png',
+  },
+  deporte: {
+    emilioNsue: '/images/categories/deporte.png',
   },
 } as const;
 
@@ -128,6 +145,12 @@ export const biografiaItems: BiografiaItem[] = [
     category: 'politica',
     imageUrl: MOCK_IMAGES.politica.macias,
     year: '1924–1979',
+  },
+  {
+    id: 'emilio-nsue',
+    category: 'deporte',
+    imageUrl: MOCK_IMAGES.deporte.emilioNsue,
+    year: '1980–',
   },
 ];
 
